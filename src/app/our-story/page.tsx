@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Our Story - Elana Koenig's Journey | Koenig Childhood Cancer Foundation",
     description: "Discover the inspiring story of Elana Koenig, an 11-year-old cancer survivor who founded KCCF to help families battling childhood cancer. Learn about our mission and impact.",
     type: "website",
-    url: "https://thekccf.org/our-story",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/our-story` : "https://thekccf.org/our-story",
   },
   robots: {
     index: true,

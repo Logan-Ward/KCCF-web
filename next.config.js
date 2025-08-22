@@ -2,7 +2,12 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['thekccf.org'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'thekccf.org',
+      },
+    ],
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if

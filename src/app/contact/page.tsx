@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Contact Us - Koenig Childhood Cancer Foundation",
     description: "Get in touch with the Koenig Childhood Cancer Foundation. We're here to help families battling childhood cancer and answer your questions about our programs.",
     type: "website",
-    url: "https://thekccf.org/contact",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/contact` : "https://thekccf.org/contact",
   },
   robots: {
     index: true,

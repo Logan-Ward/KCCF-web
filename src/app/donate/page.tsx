@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Donate - Support Childhood Cancer Families | Koenig Childhood Cancer Foundation",
     description: "Make a difference in the lives of children battling cancer. Your donation directly supports families with medical bills, transportation, lodging, and essential expenses.",
     type: "website",
-    url: "https://thekccf.org/donate",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/donate` : "https://thekccf.org/donate",
   },
   robots: {
     index: true,

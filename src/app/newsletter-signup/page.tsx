@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Newsletter Signup - Stay Connected with KCCF | Koenig Childhood Cancer Foundation",
     description: "Stay updated with the latest news, events, and impact stories from the Koenig Childhood Cancer Foundation. Join our newsletter to be part of our mission.",
     type: "website",
-    url: "https://thekccf.org/newsletter-signup",
+    url: process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/newsletter-signup` : "https://thekccf.org/newsletter-signup",
   },
   robots: {
     index: true,
