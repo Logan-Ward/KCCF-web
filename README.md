@@ -1,6 +1,6 @@
 ## The Koenig Childhood Cancer Foundation (KCCF) Website
 
-Production-ready Next.js site for the Koenig Childhood Cancer Foundation.
+Production-ready Next.js site for the Koenig Childhood Cancer Foundation with modern features including dark mode, cookie consent management, and embedded donation forms.
 
 ### Tech stack
 - **Framework**: Next.js 15 (App Router)
@@ -9,6 +9,8 @@ Production-ready Next.js site for the Koenig Childhood Cancer Foundation.
 - **Linting**: ESLint (Next.js config)
 - **Runtime**: Node.js 20
 - **Container**: Docker (standalone Next.js output)
+- **Donations**: Zeffy integration (replaces Stripe)
+- **Features**: Dark mode, cookie consent, responsive design
 
 ---
 
@@ -27,16 +29,14 @@ Visit `http://localhost:3000`.
 ## Environment variables
 Create a `.env.local` file in `thekccf.org/` for local development (do not commit this file):
 ```env
-# Public key safe to expose to the browser
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_or_test_...
-
-# Server-side secrets – do NOT expose publicly
-STRIPE_SECRET_KEY=sk_live_or_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
+# Currently no environment variables required for basic functionality
+# The site uses Zeffy for donations (no API keys needed)
+# Cookie consent and theme preferences are stored locally
 ```
 Notes:
-- `NEXT_PUBLIC_` variables are embedded client-side. Keep only non-sensitive values there.
-- If you are not using Stripe locally, you can omit these variables.
+- The site currently uses Zeffy for donations which doesn't require API keys
+- Cookie consent and theme preferences are managed client-side
+- If you add additional integrations later, add their environment variables here
 
 ## Project scripts
 - `npm run dev`: Start the dev server with Turbopack
@@ -78,15 +78,40 @@ thekccf.org/
   src/
     app/                 # App Router pages and API routes
       api/health/        # GET health check
-      donate/            # Donations page
+      aid/               # Aid/Support page
       contact/           # Contact page
+      crazy-socks/       # Crazy Socks campaign page
+      donate/            # Donations page
+      kccf-family/       # KCCF family page
       media/             # Media page
       newsletter-signup/ # Newsletter page
       our-story/         # About/KCCF story
       volunteer/         # Volunteer page
       page.tsx           # Home
+      HomeContent.tsx    # Home page content
+      layout.tsx         # Root layout with providers
+      globals.css        # Global styles
+      manifest.ts        # PWA manifest
+      robots.ts          # SEO robots
+      sitemap.ts         # SEO sitemap
+      opengraph-image.tsx # Social media images
+      not-found.tsx      # 404 page
     components/          # Reusable UI components
-    contexts/            # React contexts (theme, donation modal, etc.)
+      DonationModal.tsx  # Embedded donation form modal
+      ConsentPreferencesModal.tsx # Cookie preferences
+      CookieConsentBanner.tsx # Cookie consent banner
+      ThemeToggle.tsx    # Dark/light mode toggle
+      Navigation.tsx     # Site navigation
+      Footer.tsx         # Site footer
+      PageHeader.tsx     # Page headers
+      DonationButton.tsx # Donation CTA buttons
+      SubmissionModal.tsx # Form submission modal
+      LoadingSpinner.tsx # Loading indicators
+    contexts/            # React contexts
+      ThemeContext.tsx   # Dark/light theme management
+      CookieConsentContext.tsx # Cookie consent state
+      DonationModalContext.tsx # Donation modal state
+      SlideshowContext.tsx # Image slideshow state
   public/                # Static assets (logos, images)
   next.config.js         # Next.js configuration (standalone output)
   Dockerfile             # Production container build (standalone)
@@ -98,20 +123,28 @@ thekccf.org/
 - Page content: edit respective `src/app/<route>/page.tsx` files
 - Global styles: `src/app/globals.css`
 - Navigation/Footer: `src/components/Navigation.tsx`, `src/components/Footer.tsx`
+- Theme customization: `src/contexts/ThemeContext.tsx`
+- Cookie consent: `src/contexts/CookieConsentContext.tsx`
+- Donation modal: `src/components/DonationModal.tsx`
 
 ## Images and optimization
 - Static files live in `public/`
 - `next.config.js` allows images from the `thekccf.org` domain
 
-## Stripe notes (if used)
-- The UI includes donation-related components. If you connect Stripe:
-  - Set `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY` in your environment.
-  - If you add server-side webhooks, also set `STRIPE_WEBHOOK_SECRET` and wire your endpoint accordingly.
+## Donation integration
+- The site uses Zeffy for donations via embedded iframe
+- No API keys or server-side processing required
+- Donation modal is controlled by `src/components/DonationModal.tsx`
+- Cookie consent is required for donation form display
+- Campaign-specific donation forms can be configured in the modal
 
 ## Troubleshooting
 - Port already in use: stop the other service or change the port mapping in `docker-compose.yml`.
 - ESLint warnings during build: `next.config.js` is set to allow builds to complete; use `npm run lint` locally to fix issues.
 - Node version mismatch: ensure Node 20.x locally to match Docker.
+- Dark mode not working: check `src/contexts/ThemeContext.tsx` and ensure theme toggle is properly connected.
+- Cookie consent issues: verify `src/contexts/CookieConsentContext.tsx` is properly initialized in layout.
+- Donation modal not loading: ensure marketing cookies are enabled in cookie preferences.
 
 ## Maintainers and handoff
 - Primary owner: KCCF web team
