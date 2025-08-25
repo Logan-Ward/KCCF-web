@@ -12,6 +12,7 @@ import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { CookieConsentProvider } from "@/contexts/CookieConsentContext";
 import ConsentPreferencesModal from "@/components/ConsentPreferencesModal";
 import SubmissionModal from "@/components/SubmissionModal";
+import { Suspense } from "react";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -57,7 +58,9 @@ export default function RootLayout({
                 <ConsentPreferencesModal />
                 <Footer />
                 <DonationModal />
-                <SubmissionModal />
+                <Suspense fallback={null}>
+                  <SubmissionModal />
+                </Suspense>
               </SlideshowProvider>
             </DonationModalProvider>
           </CookieConsentProvider>
