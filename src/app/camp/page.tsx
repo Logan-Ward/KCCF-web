@@ -99,7 +99,7 @@ export default function Camp() {
             <div className="bg-white dark:bg-gray-700 rounded-lg p-1 shadow-lg">
               <button
                 onClick={() => setActiveForm('camper')}
-                className={`px-6 py-3 rounded-md font-semibold transition-all duration-200 ${
+                className={`px-6 py-3 rounded-md font-semibold transition-all duration-200 cursor-pointer ${
                   activeForm === 'camper'
                     ? 'bg-violet-600 dark:bg-violet-500 text-white shadow-md'
                     : 'text-violet-600 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-gray-600'
@@ -109,7 +109,7 @@ export default function Camp() {
               </button>
               <button
                 onClick={() => setActiveForm('counselor')}
-                className={`px-6 py-3 rounded-md font-semibold transition-all duration-200 ${
+                className={`px-6 py-3 rounded-md font-semibold transition-all duration-200 cursor-pointer ${
                   activeForm === 'counselor'
                     ? 'bg-violet-600 dark:bg-violet-500 text-white shadow-md'
                     : 'text-violet-600 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-gray-600'
@@ -122,7 +122,7 @@ export default function Camp() {
 
           {/* Camper Form */}
           {activeForm === 'camper' && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
               <h3 className="text-2xl font-bold text-violet-700 dark:text-violet-400 mb-6 text-center">Camper Registration</h3>
               <p className="text-violet-600 dark:text-violet-300 mb-8 text-center">
                 Register your child for our upcoming camp session. We'll contact you with more details and confirm your spot.
@@ -146,7 +146,7 @@ export default function Camp() {
                         id="parentFirstName"
                         name="parentFirstName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -158,7 +158,7 @@ export default function Camp() {
                         id="parentLastName"
                         name="parentLastName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -173,7 +173,7 @@ export default function Camp() {
                         id="parentEmail"
                         name="parentEmail"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -185,7 +185,7 @@ export default function Camp() {
                         id="parentPhone"
                         name="parentPhone"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function Camp() {
                         id="camperFirstName"
                         name="camperFirstName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -217,7 +217,7 @@ export default function Camp() {
                         id="camperLastName"
                         name="camperLastName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function Camp() {
                         min="0"
                         max="18"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -245,7 +245,7 @@ export default function Camp() {
                         type="text"
                         id="diagnosis"
                         name="diagnosis"
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -259,7 +259,7 @@ export default function Camp() {
                       name="medicalNeeds"
                       rows={3}
                       placeholder="Please describe any medical needs, dietary restrictions, or special requirements..."
-                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                     ></textarea>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ export default function Camp() {
                     name="additionalInfo"
                     rows={4}
                     placeholder="Any other information you'd like us to know..."
-                    className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                    className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                   ></textarea>
                 </div>
 
@@ -305,7 +305,7 @@ export default function Camp() {
 
           {/* Counselor Form */}
           {activeForm === 'counselor' && (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
               <h3 className="text-2xl font-bold text-violet-700 dark:text-violet-400 mb-6 text-center">Counselor Application</h3>
               <p className="text-violet-600 dark:text-violet-300 mb-8 text-center">
                 Join our team of dedicated counselors and help create an amazing camp experience for children with cancer.
@@ -329,7 +329,7 @@ export default function Camp() {
                         id="counselorFirstName"
                         name="counselorFirstName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -341,7 +341,7 @@ export default function Camp() {
                         id="counselorLastName"
                         name="counselorLastName"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -356,7 +356,7 @@ export default function Camp() {
                         id="counselorEmail"
                         name="counselorEmail"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -368,7 +368,7 @@ export default function Camp() {
                         id="counselorPhone"
                         name="counselorPhone"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -381,7 +381,7 @@ export default function Camp() {
                       type="text"
                       id="counselorAddress"
                       name="counselorAddress"
-                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                     />
                   </div>
                 </div>
@@ -401,7 +401,7 @@ export default function Camp() {
                         name="age"
                         min="18"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                     <div>
@@ -412,7 +412,7 @@ export default function Camp() {
                         type="text"
                         id="occupation"
                         name="occupation"
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       />
                     </div>
                   </div>
@@ -427,7 +427,7 @@ export default function Camp() {
                       rows={4}
                       placeholder="Describe your experience working with children, medical settings, or camp environments..."
                       required
-                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                     ></textarea>
                   </div>
 
@@ -440,7 +440,7 @@ export default function Camp() {
                       name="certifications"
                       rows={3}
                       placeholder="First Aid, CPR, medical training, camp counseling certifications, etc."
-                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                     ></textarea>
                   </div>
                 </div>
@@ -458,7 +458,7 @@ export default function Camp() {
                         id="availability"
                         name="availability"
                         required
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       >
                         <option value="">Select availability</option>
                         <option value="fullTime">Full-time during camp session</option>
@@ -474,7 +474,7 @@ export default function Camp() {
                       <select
                         id="preferredAge"
                         name="preferredAge"
-                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
                       >
                         <option value="">No preference</option>
                         <option value="younger">Younger children (5-10)</option>
@@ -494,7 +494,7 @@ export default function Camp() {
                       rows={4}
                       placeholder="Tell us about your motivation and what you hope to contribute..."
                       required
-                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                      className="w-full px-4 py-3 border border-violet-300 dark:border-violet-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-saffron-400 dark:focus:ring-saffron-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
                     ></textarea>
                   </div>
                 </div>
