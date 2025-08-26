@@ -18,7 +18,7 @@ export default function HomeContent() {
             alt="KCCF Banner Background"
             fill
             sizes="100vw"
-            className="object-cover object-[90%_center] opacity-70"
+            className="object-cover object-[90%_center]"
             priority
             fetchPriority="high"
         />
@@ -72,16 +72,16 @@ export default function HomeContent() {
             {/* Impact Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-violet-600 dark:text-saffron-400 mb-2">$2M+</div>
+                <div className="text-3xl md:text-4xl font-bold text-violet-600 dark:text-saffron-400 mb-2">$1.5M+</div>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">Raised for families</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-fandango-600 dark:text-fandango-400 mb-2">500+</div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Families supported</p>
+                <div className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">500+</div>
+                <p className="text-black dark:text-white text-sm">Families supported</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-saffron-600 dark:text-saffron-400 mb-2">100%</div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Direct to families</p>
+                <div className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-2">100%</div>
+                <p className="text-black dark:text-white text-sm">Direct to families</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mb-2">3</div>
