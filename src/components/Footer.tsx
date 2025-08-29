@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Contact Info */}
-          <div className="col-span-1 md:col-span-2">
+          <div>
             <h3 className="text-xl font-bold mb-4 text-white">Koenig Childhood Cancer Foundation</h3>
             <div className="space-y-2 text-gray-300">
               <p>1175 York Ave., Suite 15E</p>
@@ -124,16 +124,14 @@ export default function Footer() {
               <li><Link href="/kccf-family" className="text-gray-300 hover:text-white transition-colors">KCCF Family</Link></li>
             </ul>
           </div>
-        </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-8 pt-8 border-t border-gray-700">
-          <div className="max-w-md">
+          {/* Newsletter Signup */}
+          <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Get the Latest Nonprofit News in Our Newsletter</h4>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <input type="hidden" name="formType" value="footer_newsletter" />
               <input type="hidden" name="pagePath" value="footer" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <input
                   type="text"
                   placeholder="First name"
