@@ -2,11 +2,10 @@ import { MetadataRoute } from 'next'
 
 export const dynamic = 'force-static'
 
-const isStaging = process.env.NEXT_PUBLIC_SITE_ENV === 'staging' ||
-  (process.env.NEXT_PUBLIC_SITE_URL && /staging\./i.test(process.env.NEXT_PUBLIC_SITE_URL))
+const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === 'production'
 
 export default function robots(): MetadataRoute.Robots {
-  if (isStaging) {
+  if (!isProduction) {
     return {
       rules: [
         {
