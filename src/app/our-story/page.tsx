@@ -3,42 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
-import { useState } from 'react';
 
 export default function OurStory() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    // Prevent multiple submissions
-    if (isSubmitting) return;
-    
-    setIsSubmitting(true);
-    
-    // Submit the form
-    const formData = new FormData(e.currentTarget);
-    
-    fetch('/api/submit', {
-      method: 'POST',
-      body: formData
-    }).then(response => {
-      if (response.ok) {
-        window.location.href = '/our-story?submitted=1';
-      } else {
-        window.location.href = '/our-story?submitted=0';
-      }
-    }).catch((error) => {
-      console.error('Form submission error:', error);
-      window.location.href = '/our-story?submitted=0';
-    }).finally(() => {
-      setIsSubmitting(false);
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <PageHeader 
+      <PageHeader
         title="Our Story"
         subtitle="From a young cancer survivor's dream to a foundation that has helped hundreds of families across the nation."
       />
@@ -54,7 +23,7 @@ export default function OurStory() {
               From a brave young girl fighting cancer to a powerful advocate helping others in their battles.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* During Treatment */}
             <div className="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -127,11 +96,11 @@ export default function OurStory() {
               <div className="inline-block bg-orange-500 px-4 py-2 rounded-full mb-6">
                 <span className="text-white font-semibold text-sm">From Patient to Founder</span>
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
                 <span className="text-violet-600 dark:text-saffron-400">Elana's</span> <span className="text-fandango-600 dark:text-fandango-400">Story</span>
               </h2>
-              
+
               <div className="space-y-6 text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
                 <p className="text-xl font-semibold text-violet-600 dark:text-saffron-400">
                   My name is Elana Koenig, and I am a cancer survivor, singer, and founder of Koenig Childhood Cancer Foundation.
@@ -153,7 +122,7 @@ export default function OurStory() {
                 </p>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#732154] to-fandango-400 rounded-3xl transform rotate-6 scale-105 opacity-20"></div>
               <div className="relative bg-gradient-to-br from-[#732154]/20 to-[#732154]/30 dark:from-[#732154]/40 dark:to-[#732154]/50 p-8 rounded-3xl shadow-2xl">
@@ -221,213 +190,9 @@ export default function OurStory() {
                 Elana shares her inspiring story at schools, organizations, and events to raise awareness about childhood cancer and the importance of supporting affected families.
               </p>
             </div>
-            
+
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <input type="hidden" name="formType" value="book_elana" />
-                <input type="hidden" name="pagePath" value="/our-story" />
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="organization" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      What is the name of your corporation, organization, school, or community group? *
-                    </label>
-                    <input
-                      type="text"
-                      id="organization"
-                      name="organization"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="fullName"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="participants" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Approximately how many participants will be present at the event? *
-                    </label>
-                    <input
-                      type="number"
-                      id="participants"
-                      name="participants"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Your Role / Title *
-                    </label>
-                    <input
-                      type="text"
-                      id="role"
-                      name="role"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Approximately what budget is allocated for this engagement? *
-                    </label>
-                    <input
-                      type="text"
-                      id="budget"
-                      name="budget"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="confirm-email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Confirm Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="confirm-email"
-                      name="confirmEmail"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      Phone Number (in case your email does not go through)
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      What address will the event take place? *
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="date" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                      What is the exact or preferred date (or month) of your event? *
-                    </label>
-                    <input
-                      type="text"
-                      id="date"
-                      name="eventDate"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                      placeholder="e.g., March 15, 2024 or March 15-20, 2024"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-time" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                    Preferred time to contact you *
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-time"
-                    name="contactTime"
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">
-                    What type of engagement are you booking Elana for?
-                  </label>
-                  <div className="space-y-2">
-                    {['Speaking', 'Singing', 'Presenting', 'Media Appearance / Interview', 'Other (please explain in the message box below)'].map((type) => (
-                      <label key={type} className="flex items-center">
-                        <input
-                          type="radio"
-                          name="engagement-type"
-                          value={type.toLowerCase()}
-                          className="mr-2 text-fandango-500 focus:ring-fandango-500"
-                        />
-                        <span className="text-gray-700 dark:text-gray-200">{type}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
-                    Additional Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-fandango-500 dark:focus:ring-fandango-400 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-                    placeholder="If there's anything else you'd like to share, please let us know here"
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-3 px-6 rounded-full transition duration-300 font-semibold text-lg cursor-pointer flex items-center justify-center ${
-                    isSubmitting 
-                      ? 'bg-gray-400 text-gray-600 cursor-not-allowed' 
-                      : 'bg-fandango-600 hover:bg-fandango-700 dark:bg-fandango-500 dark:hover:bg-fandango-600 text-white'
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Submitting Request...
-                    </>
-                  ) : (
-                    'Submit Application'
-                  )}
-                </button>
-              </form>
+              <iframe src="https://forms.monday.com/forms/embed/0caf48b3cfeede4c889e59ac52ce5fb1?r=use1" className="w-full h-[1900px] rounded-lg"></iframe>
             </div>
           </div>
         </div>
@@ -440,7 +205,7 @@ export default function OurStory() {
           <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-white"></div>
           <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-white"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
             Join <span className="text-saffron-300">Elana's</span> <span className="text-white dark:text-[#732154]">Mission</span>
@@ -448,7 +213,7 @@ export default function OurStory() {
           <p className="text-xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed">
             Help us continue Elana's vision of supporting families battling childhood cancer.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/donate" className="group bg-orange-500 hover:bg-orange-600 text-white py-4 px-10 rounded-full transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center justify-center">
               <span>Donate Now</span>

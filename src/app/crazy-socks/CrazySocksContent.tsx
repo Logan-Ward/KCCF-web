@@ -1,14 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import PageHeader from '@/components/PageHeader'
 
 export default function CrazySocksContent() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  
+
   const slideshowImages = [
     "/images/MetaLeadershipMakingfitBags-scaled.jpg",
     "/images/bankofamerica-scaled.jpeg",
@@ -54,37 +52,9 @@ export default function CrazySocksContent() {
     setCurrentSlide((prev) => (prev - 1 + slideshowImages.length) % slideshowImages.length)
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    // Prevent multiple submissions
-    if (isSubmitting) return;
-    
-    setIsSubmitting(true);
-    
-    // Submit the form
-    const formData = new FormData(e.currentTarget);
-    
-    fetch('/api/submit', {
-      method: 'POST',
-      body: formData
-    }).then(response => {
-      if (response.ok) {
-        window.location.href = '/crazy-socks?submitted=1';
-      } else {
-        window.location.href = '/crazy-socks?submitted=0';
-      }
-    }).catch((error) => {
-      console.error('Form submission error:', error);
-      window.location.href = '/crazy-socks?submitted=0';
-    }).finally(() => {
-      setIsSubmitting(false);
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <PageHeader 
+      <PageHeader
         title="Crazy Socks Gift Bags"
         subtitle="Use your company's Corporate Social Responsibility (CSR) program to sponsor and host gift bag events for hospitalized children – bring smiles to their faces."
       />
@@ -97,11 +67,11 @@ export default function CrazySocksContent() {
               <div className="inline-block bg-orange-500 px-4 py-2 rounded-full mb-6">
                 <span className="text-white font-semibold text-sm">Our Signature Project</span>
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white">
                 Why <span className="text-[#732154] dark:text-saffron-400">Crazy Socks</span> <span className="text-fandango-600 dark:text-fandango-400">Gift Bags</span>?
               </h2>
-              
+
               <div className="space-y-6 text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
                 <p>
                   Crazy Socks Gift Bag is KCCF's signature project, inspired by founder Elana's personal journey with cancer at the age of 7. While battling Ewing's sarcoma, a rare and aggressive bone cancer, Elana was struck by how the dull hospital socks mirrored the monotony and sadness of her days.
@@ -114,7 +84,7 @@ export default function CrazySocksContent() {
                 </p>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#732154] to-fandango-400 rounded-3xl transform rotate-6 scale-105 opacity-20"></div>
               <div className="relative bg-gradient-to-br from-[#732154]/20 to-[#732154]/30 dark:from-[#732154]/40 dark:to-[#732154]/50 p-8 rounded-3xl shadow-2xl">
@@ -139,7 +109,7 @@ export default function CrazySocksContent() {
               Our <span className="text-[#732154] dark:text-saffron-400">Impact</span>
             </h2>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
               <div className="text-4xl font-bold text-[#732154] dark:text-saffron-400 mb-4">65,000+</div>
@@ -176,9 +146,8 @@ export default function CrazySocksContent() {
                 {slideshowImages.map((image, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentSlide ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                      }`}
                   >
                     <Image
                       src={image}
@@ -190,7 +159,7 @@ export default function CrazySocksContent() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
                 ))}
-                
+
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
@@ -215,9 +184,8 @@ export default function CrazySocksContent() {
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentSlide ? 'bg-white' : 'bg-white/50'
-                      }`}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-white' : 'bg-white/50'
+                        }`}
                     />
                   ))}
                 </div>
@@ -276,7 +244,7 @@ export default function CrazySocksContent() {
               We bring the fun event to you! Leading companies partner with us to make a difference.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Meta Leadership */}
             <div className="group bg-gradient-to-br from-platinum-50 to-platinum-100 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -396,7 +364,7 @@ export default function CrazySocksContent() {
           <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-white"></div>
           <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-white"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -406,210 +374,10 @@ export default function CrazySocksContent() {
               For hospitalized children battling cancer
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-gray-900">
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <input type="hidden" name="formType" value="crazy_socks_sponsor" />
-                <input type="hidden" name="pagePath" value="/crazy-socks" />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-2">
-                      What is the name of your corporation, organization, school, or community group? *
-                    </label>
-                    <input
-                      type="text"
-                      id="organization"
-                      name="organization"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="participants" className="block text-sm font-medium text-gray-700 mb-2">
-                      Approximately how many participants will be present at the event? *
-                    </label>
-                    <input
-                      type="number"
-                      id="participants"
-                      name="participants"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your Role / Title *
-                    </label>
-                    <input
-                      type="text"
-                      id="role"
-                      name="role"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-                      Approximately what budget is allocated for this engagement? *
-                    </label>
-                    <input
-                      type="text"
-                      id="budget"
-                      name="budget"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="confirmEmail" className="block text-sm font-medium text-gray-700 mb-2">
-                      Confirm Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="confirmEmail"
-                      name="confirmEmail"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="retypeEmail" className="block text-sm font-medium text-gray-700 mb-2">
-                      Re-type Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="retypeEmail"
-                      name="retypeEmail"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
-                      What address will the event take place? *
-                    </label>
-                    <input
-                      type="text"
-                      id="address"
-                      name="address"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number (in case your email does not go through)
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700 mb-2">
-                      What is the exact or preferred date (or month) of your event? *
-                    </label>
-                    <input
-                      type="text"
-                      id="eventDate"
-                      name="eventDate"
-                      required
-                      placeholder="(We understand that dates may shift, and we are flexible to accommodate)"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="contactTime" className="block text-sm font-medium text-gray-700 mb-2">
-                      Preferred time to contact you *
-                    </label>
-                    <input
-                      type="text"
-                      id="contactTime"
-                      name="contactTime"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Additional Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    placeholder="If there's anything else you'd like to share, please let us know here"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#732154] focus:border-transparent"
-                  ></textarea>
-                </div>
-
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`py-4 px-10 rounded-full transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer flex items-center justify-center mx-auto ${
-                      isSubmitting 
-                        ? 'bg-gray-400 text-gray-600 cursor-not-allowed scale-100 translate-y-0' 
-                        : 'bg-[#732154] hover:bg-[#732154]/90 dark:bg-[#732154] dark:hover:bg-[#732154]/90 text-white'
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Submitting Application...
-                      </>
-                    ) : (
-                      'Submit Application'
-                    )}
-                  </button>
-                </div>
-              </form>
+              <iframe src="https://forms.monday.com/forms/embed/78b71c024990383d274ad455e744923a?r=use1" className="w-full h-[2000px] rounded-lg"></iframe>
             </div>
           </div>
         </div>
