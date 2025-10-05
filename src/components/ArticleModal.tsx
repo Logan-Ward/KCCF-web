@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 import { useArticleModal, ARTICLE_CONFIGS } from '@/contexts/ArticleModalContext'
 
 export default function ArticleModal() {
@@ -72,9 +73,11 @@ export default function ArticleModal() {
           <div className="prose dark:prose-invert max-w-none">
             {article.imageUrl && (
               <div className="mb-6">
-                <img 
+                <Image 
                   src={article.imageUrl} 
                   alt={article.title}
+                  width={800}
+                  height={600}
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
