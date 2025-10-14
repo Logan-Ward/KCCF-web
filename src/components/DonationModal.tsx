@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { useDonationModal } from '@/contexts/DonationModalContext'
-// Stripe removed; using GiveLively iframe
 import { useTheme } from '@/contexts/ThemeContext'
 import { useCookieConsent } from '@/contexts/CookieConsentContext'
+
+type DonationProvider = 'zeffy' | 'givelively'
  
 
 // All previous multi-step and amount form logic removed in favor of Zeffy embed
@@ -15,7 +16,7 @@ export default function DonationModal() {
   const { isOpen, closeModal, campaign } = useDonationModal()
   const { theme } = useTheme()
   const { consent, openPreferences } = useCookieConsent()
-  
+  const [selectedProvider, setSelectedProvider] = useState<DonationProvider>('zeffy')
 
   // Close modal on escape key
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function DonationModal() {
       {/* Modal */}
       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex">
         {/* Campaign Card - Left Side */}
-        <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#732154] to-fandango-600 text-white p-8 flex-col justify-between">
+         <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#732154] to-violet-600 text-white p-8 flex-col justify-between">
           <div>
             <div className="mb-6">
               <Image 
@@ -127,15 +128,56 @@ export default function DonationModal() {
 
           <div className="flex-1">
             {consent.marketing ? (
-              <iframe
-                className="block w-full h-[600px] max-w-full"
-                src="https://www.zeffy.com/embed/donation-form/donate-to-make-a-difference-18649"
-                title="Zeffy donation form"
-                frameBorder={0}
-                scrolling="yes"
-                allow="payment"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-              />
+              <>
+                {/* Provider Selection */}
+                <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Choose your preferred donation platform:</p>
+                  <div className="flex space-x-2">
+                     <button
+                       onClick={() => setSelectedProvider('zeffy')}
+                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${
+                         selectedProvider === 'zeffy'
+                           ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
+                           : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
+                       }`}
+                     >
+                       Zeffy
+                     </button>
+                     <button
+                       onClick={() => setSelectedProvider('givelively')}
+                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${
+                         selectedProvider === 'givelively'
+                           ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
+                           : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
+                       }`}
+                     >
+                       GiveLively
+                     </button>
+                  </div>
+                </div>
+                
+                {selectedProvider === 'zeffy' ? (
+                <iframe
+                  className="block w-full h-[600px] max-w-full"
+                  src="https://www.zeffy.com/embed/donation-form/donate-to-make-a-difference-18649"
+                  title="Zeffy donation form"
+                  frameBorder={0}
+                  scrolling="yes"
+                  allow="payment"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                />
+              ) : (
+                <iframe
+                  className="block w-full h-[600px] max-w-full"
+                  src="https://secure.givelively.org/donate/koenig-childhood-cancer-foundation?"
+                  title="GiveLively donation form"
+                  frameBorder={0}
+                  scrolling="yes"
+                  allow="payment"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                />
+                )}
+              </>
             ) : (
               <div className="h-[600px] flex flex-col items-center justify-center text-center p-8">
                 <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Marketing cookies required</h3>

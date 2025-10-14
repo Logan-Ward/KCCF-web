@@ -157,12 +157,27 @@ export default function Footer() {
                 >
                   <Image
                     src="https://cdn.greatnonprofits.org/img/2025-top-rated-awards-badge-embed.png?id=997323769"
-                    alt="Koenig Childhood Cancer Foundation Nonprofit Overview and Reviews on GreatNonprofits"
+                    alt="GreatNonprofits Top-Rated Award 2025"
                     width={120}
-                    height={90}
+                    height={100}
                     className="mb-2"
                     unoptimized
                   />
+                  <p className="text-sm text-gray-300 text-center">GreatNonprofits Top-Rated 2025</p>
+                </a>
+              </div>
+              <div className="flex flex-col items-center">
+                <a 
+                  href="https://www.charitynavigator.org/ein/844892279" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity flex flex-col items-center"
+                >
+                  <div className="w-[100px] h-[100px] bg-blue-600 rounded-lg flex flex-col items-center justify-center mb-2 text-white">
+                    <div className="text-2xl font-bold">★★★</div>
+                    <div className="text-xs font-semibold">78%</div>
+                  </div>
+                  <p className="text-sm text-gray-300 text-center">Charity Navigator 3-Star Rating</p>
                 </a>
               </div>
             </div>
