@@ -129,60 +129,63 @@ export default function Footer() {
         {/* Awards Section */}
         <div className="mt-8 pt-8 border-t border-gray-700">
           <div className="text-center">
-            <h4 className="text-lg font-semibold mb-6 text-white">Recognition & Awards</h4>
-            <div className="flex flex-col sm:flex-row items-end justify-center gap-8">
-              <div className="flex flex-col items-center">
+            <h4 className="text-lg font-semibold mb-4 md:mb-6 text-white">Recognition & Awards</h4>
+            <div className="flex flex-col sm:flex-row items-end justify-center gap-4 sm:gap-6 md:gap-8">
+              <div className="flex flex-col items-center w-full sm:w-auto max-w-[200px] mx-auto sm:mx-0">
                 <a 
                   href="https://www.guidestar.org/profile/84-4892279" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity flex flex-col items-center"
                 >
-                  <div className="h-[100px] flex items-center justify-center mb-2">
+                  <div className="h-[80px] sm:h-[100px] flex items-center justify-center mb-2">
                     <Image
                       src="/candid seal of transparency.png"
                       alt="Candid seal of transparency logo"
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
+                      className="sm:w-[100px] sm:h-[100px]"
                     />
                   </div>
-                  <p className="text-sm text-gray-300 text-center h-10 flex items-center justify-center">Candid Platinum Transparency 2025</p>
+                  <p className="text-xs sm:text-sm text-gray-300 text-center h-8 sm:h-10 flex items-center justify-center px-2">Candid Platinum Transparency 2025</p>
                 </a>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto max-w-[200px] mx-auto sm:mx-0">
                 <a 
                   href="https://greatnonprofits.org/org/koenig-childhood-cancer-foundation" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity flex flex-col items-center"
                 >
-                  <div className="h-[100px] flex items-center justify-center mb-2">
+                  <div className="h-[80px] sm:h-[100px] flex items-center justify-center mb-2">
                     <Image
                       src="/images/2025-top-rated-awards-badge-embed.png"
                       alt="GreatNonprofits Top-Rated Award 2025"
-                      width={140}
-                      height={100}
+                      width={110}
+                      height={80}
+                      className="sm:w-[140px] sm:h-[100px]"
                     />
                   </div>
-                  <p className="text-sm text-gray-300 text-center h-10 flex items-center justify-center">GreatNonprofits Top-Rated 2025</p>
+                  <p className="text-xs sm:text-sm text-gray-300 text-center h-8 sm:h-10 flex items-center justify-center px-2">GreatNonprofits Top-Rated 2025</p>
                 </a>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center w-full sm:w-auto max-w-[200px] mx-auto sm:mx-0">
                 <a 
                   href="https://www.charitynavigator.org/ein/844892279" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity flex flex-col items-center"
                 >
-                  <div className="h-[100px] flex items-center justify-center mb-2">
+                  <div className="h-[80px] sm:h-[100px] flex items-center justify-center mb-2">
                     <Image
                       src="/images/4star-ratingbadge-2025.png"
                       alt="Charity Navigator 4-Star Rating Badge 2025"
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
+                      className="sm:w-[100px] sm:h-[100px]"
                     />
                   </div>
-                  <p className="text-sm text-gray-300 text-center h-10 flex items-center justify-center">Charity Navigator 4-Star Rating</p>
+                  <p className="text-xs sm:text-sm text-gray-300 text-center h-8 sm:h-10 flex items-center justify-center px-2">Charity Navigator 4-Star Rating</p>
                 </a>
               </div>
             </div>
