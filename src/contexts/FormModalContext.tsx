@@ -41,8 +41,8 @@ export const FORM_CONFIGS: Record<FormType, FormConfig> = {
   'newsletter-signup': {
     title: 'Stay Connected',
     subtitle: 'Join our newsletter to receive updates about our programs, events, and the families we help.',
-    src: 'https://forms.monday.com/forms/embed/b913243fb4f77326efb2866b627fc191?r=use1',
-    height: '850px'
+    src: 'https://thekccf.us17.list-manage.com/subscribe?u=041a777be61cc7e1bc20e3517&id=8696f27783',
+    height: '650px'
   },
   'book-elana': {
     title: 'Book Elana Koenig',
