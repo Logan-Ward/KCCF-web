@@ -55,7 +55,7 @@ export default function CrazySocksContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
       <PageHeader
         title="Crazy Socks Gift Bags"
         subtitle="Use your company's Corporate Social Responsibility (CSR) program to sponsor and host gift bag events for hospitalized children – bring smiles to their faces."

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function KCCFFamily() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
       <PageHeader
         title="KCCF Family"
         subtitle="Meet the incredible team and community that makes our mission possible."

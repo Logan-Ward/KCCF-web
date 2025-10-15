@@ -8,7 +8,7 @@ import CallToAction from '@/components/CallToAction';
 
 export default function OurStory() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
       <PageHeader
         title="Our Story"
         subtitle="From a young cancer survivor's dream to a foundation that has helped hundreds of families across the nation."

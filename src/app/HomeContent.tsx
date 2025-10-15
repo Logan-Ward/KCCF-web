@@ -11,7 +11,7 @@ import { IMPACT_STATS } from '@/constants/impactStats';
 export default function HomeContent() {
   const { theme } = useTheme()
   return (
-    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-platinum-50 via-white to-platinum-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-0">
         {/* Background Banner Image */}
