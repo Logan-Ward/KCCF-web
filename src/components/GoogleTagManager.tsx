@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
 import Script from 'next/script'
 import { useCookieConsent } from '@/contexts/CookieConsentContext'
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
+// Validate GTM ID format (GTM-XXXXXXX)
+const isValidGtmId = (id: string | undefined): id is string => {
+  return typeof id === 'string' && /^GTM-[A-Z0-9]+$/.test(id)
+}
+
 export default function GoogleTagManager() {
   const { consent } = useCookieConsent()
 
-  // Only load GTM when user has consented to analytics
-  if (!GTM_ID || !consent.analytics) {
+  // Only load GTM when user has consented to analytics and GTM ID is valid
+  if (!isValidGtmId(GTM_ID) || !consent.analytics) {
     return null
   }
 
