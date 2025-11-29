@@ -20,7 +20,7 @@ We prefer using GitHub Copilot's issue-to-PR functionality for creating pull req
 3. Copilot will automatically analyze the issue and generate a proposed pull request with code changes.
 4. Review the generated code changes in the PR before requesting human review.
 
-For more details, see [GitHub's documentation on using Copilot to work on issues](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-for-pull-requests/using-copilot-to-help-you-work-on-a-pull-request).
+For more details, see [GitHub's documentation on using Copilot to work on issues](https://docs.github.com/en/copilot/how-tos/use-copilot-for-common-tasks/use-copilot-to-create-or-update-issues).
 
 ### Copilot-Based Code Reviews
 
