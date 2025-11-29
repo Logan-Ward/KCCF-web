@@ -1,169 +1,193 @@
 ## The Koenig Childhood Cancer Foundation (KCCF) Website
 
-Production-ready Next.js site for the Koenig Childhood Cancer Foundation with modern features including dark mode, cookie consent management, donation modals, and comprehensive form modal system.
+Production-ready Next.js static site for the Koenig Childhood Cancer Foundation with modern features including dark mode, cookie consent management, donation modals, and comprehensive form modal system. The site is deployed to GitHub Pages with automated CI/CD.
 
-### Tech stack
-- **Framework**: Next.js 15 (App Router)
+### Tech Stack
+- **Framework**: Next.js 15 (App Router, Static Export)
 - **Language**: TypeScript
 - **UI**: React 19, Tailwind CSS 4
-- **Linting**: ESLint (Next.js config)
+- **Linting**: ESLint 9 (Next.js config)
 - **Runtime**: Node.js 20
-- **Container**: Docker (standalone Next.js output)
-- **Donations**: Zeffy integration (replaces Stripe)
+- **Hosting**: GitHub Pages (static site)
+- **Donations**: Zeffy integration (embedded iframe)
 - **Forms**: Monday.com integration via modal system
 - **Features**: Dark mode, cookie consent, responsive design, form modals, SEO optimization
 
 ---
 
 ## Prerequisites
-- Node.js 20.x and npm 10+ (Docker image also uses Node 20)
-- Optional: Docker and Docker Compose for containerized runs
-- Optional: Stripe account and keys if enabling donation flows
+- Node.js 20.x and npm 10+
+- Git for version control
 
-## Quick start (local)
+## Quick Start (Local Development)
 ```bash
+# Install dependencies
 npm install
+
+# Start development server with Turbopack
 npm run dev
 ```
 Visit `http://localhost:3000`.
 
-## Environment variables
-Create a `.env.local` file in `thekccf.org/` for local development (do not commit this file):
+## Environment Variables
+Create a `.env.local` file in the project root for local development (do not commit this file):
 ```env
-# Currently no environment variables required for basic functionality
-# The site uses Zeffy for donations (no API keys needed)
-# Cookie consent and theme preferences are stored locally
+# Optional: Set to 'production' to enable search engine indexing
+NEXT_PUBLIC_SITE_ENV=development
+
+# Optional: Override base path for deployment testing
+NEXT_PUBLIC_BASE_PATH=
 ```
 Notes:
-- The site currently uses Zeffy for donations which doesn't require API keys
+- The site uses Zeffy for donations which doesn't require API keys
 - Cookie consent and theme preferences are managed client-side
-- If you add additional integrations later, add their environment variables here
+- All form integrations use Monday.com embedded iframes (no API keys needed)
 
-## Project scripts
-- `npm run dev`: Start the dev server with Turbopack
-- `npm run build`: Production build
-- `npm run start`: Start the production server (after build)
-- `npm run lint`: Run ESLint
+## Project Scripts
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the dev server with Turbopack |
+| `npm run build` | Production build (static export to `out/` directory) |
+| `npm run start` | Start the production server locally |
+| `npm run lint` | Run ESLint code quality checks |
 
-## Running with Docker
-Build and run with Compose from the repo root:
-```bash
-docker-compose up -d --build
-```
-The app will be available at `http://localhost:3000`.
+## CI/CD Pipeline
 
-Details:
-- `thekccf.org/Dockerfile` produces a minimal runtime using Next.js standalone output.
-- `docker-compose.yml` maps port 3000 and includes a healthcheck on `/api/health`.
-- Environment variables are passed through Docker build args and runtime environment.
-- Cloudflare R2 is required for file uploads in production.
+This repository uses GitHub Actions for continuous integration and deployment:
+
+### CI/CD Workflow (`.github/workflows/nextjs.yml`)
+The main workflow runs on every push and pull request:
+
+**On Pull Requests:**
+- Lint checks (ESLint)
+- TypeScript compilation check (`tsc --noEmit`)
+- Production build verification
+
+**On Push to Main:**
+- All CI checks above
+- Automatic deployment to GitHub Pages
+
+### Security Scanning (`.github/workflows/codeql.yml`)
+CodeQL Advanced security scanning runs:
+- On every push to main
+- On every pull request to main
+- Weekly scheduled scans (Mondays at 1:28 AM UTC)
+
+**Languages analyzed:**
+- JavaScript/TypeScript
+- GitHub Actions workflows
 
 ## Deployment
-You can deploy in two common ways:
 
-1) Vercel (recommended)
-- This is a standard Next.js app; import the repo into Vercel and set environment variables in the Vercel project settings.
+The site is automatically deployed to **GitHub Pages** when changes are pushed to the `main` branch.
 
-2) Docker container
-- Build the image from `thekccf.org/Dockerfile` and run it behind your reverse proxy (e.g., Nginx/Traefik). Set required env vars at runtime.
+### How Deployment Works
+1. CI workflow runs lint, type-check, and build
+2. Static site is generated in the `out/` directory
+3. Artifact is uploaded to GitHub Pages
+4. Site is live at `https://thekccf.org`
 
-## Health check
-There is a simple health endpoint at:
+### Manual Deployment
+You can trigger a deployment manually from the GitHub Actions tab using "workflow_dispatch".
+
+## Docker (Development/Testing)
+A Dockerfile is included for containerized development or testing:
+
+```bash
+# Build the Docker image
+docker build -t kccf-web .
+
+# Run the container
+docker run -p 3000:3000 kccf-web
 ```
-/api/health
-```
-Used by Docker Compose to verify app readiness.
+**Note:** The included Dockerfile is configured for standalone server output (e.g., running `server.js`), not for serving the static export generated by `output: 'export'` in `next.config.ts`. If you wish to containerize the static export (the contents of the `out/` directory), you will need to update the Dockerfile accordingly (e.g., use an Nginx or static file server image). Production deployment uses GitHub Pages, not Docker containers.
 
-## Project structure (high level)
+## Project Structure
+
 ```
-thekccf.org/
-  src/
-    app/                 # App Router pages and API routes
-      aid/               # Aid/Support page with layout
-        layout.tsx       # Aid page metadata and layout
-        page.tsx         # Aid application (simplified with modal button)
-      camp/              # Camp page with layout
-        layout.tsx       # Camp metadata (corporate team-building SEO)
-        page.tsx         # Camp registration (modal buttons)
-      contact/           # Contact page with layout
-        layout.tsx       # Contact metadata (corporate partnerships SEO)
-        page.tsx         # Contact form (modal button)
-      crazy-socks/       # Crazy Socks campaign with layout
-        layout.tsx       # Corporate CSR SEO optimization
-        page.tsx         # Page wrapper
-        CrazySocksContent.tsx # Main content with modal button
-      donate/            # Donations page with layout
-        layout.tsx       # Donate metadata (workplace giving SEO)
-        page.tsx         # Donation page
-      kccf-family/       # KCCF family page
-      media/             # Media page with layout
-        layout.tsx       # Media metadata
-        page.tsx         # Media coverage
-      newsletter-signup/ # Newsletter page with layout
-        layout.tsx       # Newsletter metadata
-        page.tsx         # Newsletter signup (modal button)
-      our-story/         # About/KCCF story with layout
-        layout.tsx       # Our story metadata
-        page.tsx         # Story content (modal button)
-      volunteer/         # Volunteer page with layout
-        layout.tsx       # Volunteer metadata (corporate volunteering SEO)
-        page.tsx         # Volunteer opportunities (modal button)
-      page.tsx           # Home
-      HomeContent.tsx    # Home page content
-      layout.tsx         # Root layout with providers
-      globals.css        # Global styles
-      manifest.ts        # PWA manifest
-      robots.ts          # SEO robots
-      sitemap.ts         # SEO sitemap
-      opengraph-image.tsx # Social media images
-      not-found.tsx      # 404 page
-    components/          # Reusable UI components
-      DonationModal.tsx  # Embedded donation form modal
-      FormModal.tsx      # Monday.com form modal system
-      FormButton.tsx     # Form modal trigger buttons
-      ConsentPreferencesModal.tsx # Cookie preferences
-      CookieConsentBanner.tsx # Cookie consent banner
-      ThemeToggle.tsx    # Dark/light mode toggle
-      Navigation.tsx     # Site navigation
-      Footer.tsx         # Site footer (with newsletter modal button)
-      PageHeader.tsx     # Page headers
-      DonationButton.tsx # Donation CTA buttons
-      SubmissionModal.tsx # Form submission modal
-      LoadingSpinner.tsx # Loading indicators
-    contexts/            # React contexts
-      ThemeContext.tsx   # Dark/light theme management
-      CookieConsentContext.tsx # Cookie consent state
-      DonationModalContext.tsx # Donation modal state
-      FormModalContext.tsx # Form modal state and configurations
-      SlideshowContext.tsx # Image slideshow state
-  public/                # Static assets (logos, images)
-  next.config.js         # Next.js configuration (standalone output)
-  Dockerfile             # Production container build (standalone)
-  package.json           # Scripts and dependencies
+KCCF-web/
+├── .github/
+│   └── workflows/
+│       ├── codeql.yml           # CodeQL security scanning
+│       └── nextjs.yml           # CI/CD pipeline (lint, build, deploy)
+├── public/                      # Static assets (logos, images, favicons)
+│   └── images/                  # Site images
+├── src/
+│   ├── app/                     # Next.js App Router pages
+│   │   ├── aid/                 # Financial aid application page
+│   │   ├── camp/                # Camp registration page
+│   │   ├── contact/             # Contact form page
+│   │   ├── crazy-socks/         # Crazy Socks campaign page
+│   │   ├── donate/              # Donations page
+│   │   ├── fundraisers/         # Fundraisers page
+│   │   ├── kccf-family/         # KCCF family stories page
+│   │   ├── media/               # Media coverage page
+│   │   ├── newsletter-signup/   # Newsletter signup page
+│   │   ├── our-story/           # About/KCCF story page
+│   │   ├── volunteer/           # Volunteer opportunities page
+│   │   ├── page.tsx             # Home page
+│   │   ├── HomeContent.tsx      # Home page content component
+│   │   ├── layout.tsx           # Root layout with providers
+│   │   ├── globals.css          # Global styles
+│   │   ├── manifest.ts          # PWA manifest
+│   │   ├── robots.ts            # SEO robots.txt
+│   │   ├── sitemap.ts           # SEO sitemap.xml
+│   │   └── not-found.tsx        # 404 page
+│   ├── components/              # Reusable UI components
+│   │   ├── Navigation.tsx       # Site navigation
+│   │   ├── Footer.tsx           # Site footer
+│   │   ├── DonationModal.tsx    # Zeffy donation form modal
+│   │   ├── FormModal.tsx        # Monday.com form modal system
+│   │   ├── FormButton.tsx       # Form modal trigger buttons
+│   │   ├── CookieConsentBanner.tsx # Cookie consent banner
+│   │   ├── ConsentPreferencesModal.tsx # Cookie preferences modal
+│   │   ├── ThemeToggle.tsx      # Dark/light mode toggle
+│   │   └── ...                  # Other UI components
+│   ├── contexts/                # React contexts for state management
+│   │   ├── ThemeContext.tsx     # Dark/light theme management
+│   │   ├── CookieConsentContext.tsx # Cookie consent state
+│   │   ├── DonationModalContext.tsx # Donation modal state
+│   │   ├── FormModalContext.tsx # Form modal state and configurations
+│   │   └── SlideshowContext.tsx # Image slideshow state
+│   └── constants/               # Constant values and configurations
+├── Dockerfile                   # Docker build configuration
+├── next.config.ts               # Next.js configuration (static export)
+├── package.json                 # Project dependencies and scripts
+├── tsconfig.json                # TypeScript configuration
+├── eslint.config.mjs            # ESLint configuration
+├── CONTRIBUTING.md              # Contribution guidelines
+├── SECURITY.md                  # Security policy
+└── README.md                    # This file
 ```
 
-## Editing content
-- Home content: `src/app/HomeContent.tsx`
-- Page content: edit respective `src/app/<route>/page.tsx` files
-- Page metadata/SEO: edit respective `src/app/<route>/layout.tsx` files
-- Global styles: `src/app/globals.css`
-- Navigation/Footer: `src/components/Navigation.tsx`, `src/components/Footer.tsx`
-- Theme customization: `src/contexts/ThemeContext.tsx`
-- Cookie consent: `src/contexts/CookieConsentContext.tsx`
-- Donation modal: `src/components/DonationModal.tsx`
-- Form modals: `src/components/FormModal.tsx` and `src/contexts/FormModalContext.tsx`
-- **Form documentation:** See "Form Integration" section below for complete inventory of all 10 forms
+## Editing Content
 
-## Images and optimization
-- Static files live in `public/`
-- `next.config.js` allows images from the `thekccf.org` domain
+| Content Type | File Location |
+|-------------|---------------|
+| Home content | `src/app/HomeContent.tsx` |
+| Page content | `src/app/<route>/page.tsx` files |
+| Page metadata/SEO | `src/app/<route>/layout.tsx` files |
+| Global styles | `src/app/globals.css` |
+| Navigation | `src/components/Navigation.tsx` |
+| Footer | `src/components/Footer.tsx` |
+| Theme customization | `src/contexts/ThemeContext.tsx` |
+| Cookie consent | `src/contexts/CookieConsentContext.tsx` |
+| Donation modal | `src/components/DonationModal.tsx` |
+| Form modals | `src/components/FormModal.tsx` and `src/contexts/FormModalContext.tsx` |
 
-## Form integration
+## Images and Static Assets
+- Static files (logos, images, favicons) are located in `public/`
+- Images are served unoptimized (required for static export to GitHub Pages)
+- Image configuration is in `next.config.ts`
 
-### Overview of all forms on the website
-The KCCF website uses two main form systems:
+
+## Form Integration
+
+### Overview of All Forms on the Website
+The KCCF website uses multiple form systems for different purposes:
 1. **Monday.com Forms** - Embedded via modal system for applications, registrations, and contact
 2. **Donation Forms** - Zeffy and GiveLively for processing donations
+3. **Newsletter** - Mailchimp for email subscriptions
 
 All forms require Marketing cookies to be enabled via the cookie consent banner for display.
 
@@ -523,7 +547,7 @@ All Monday.com forms use a unified modal system:
   - Consistent branding across all forms
 
 ### Adding New Forms
-To add a new Monday.com form to the modal system:
+To add a new form to the modal system:
 
 1. **Add form type** to `FormType` union in `src/contexts/FormModalContext.tsx`:
    ```typescript
@@ -550,14 +574,16 @@ To add a new Monday.com form to the modal system:
    ```
 
 ### Form Types Reference
-- `camp-camper`: Camp registration for children
-- `camp-counselor`: Camp counselor applications
-- `crazy-socks-sponsor`: Corporate gift bag sponsorship
-- `newsletter-signup`: Newsletter subscription (Mailchimp)
-- `book-elana`: Elana speaking engagements
-- `volunteer`: Volunteer applications
-- `contact`: General contact form
-- `aid-application`: Financial assistance applications
+| Form ID | Description | Service |
+|---------|-------------|---------|
+| `camp-camper` | Camp registration for children | Monday.com |
+| `camp-counselor` | Camp counselor applications | Monday.com |
+| `crazy-socks-sponsor` | Corporate gift bag sponsorship | Monday.com |
+| `newsletter-signup` | Newsletter subscription | Mailchimp |
+| `book-elana` | Elana speaking engagements | Monday.com |
+| `volunteer` | Volunteer applications | Monday.com |
+| `contact` | General contact form | Monday.com |
+| `aid-application` | Financial assistance applications | Monday.com |
 
 ---
 
@@ -609,12 +635,14 @@ To add a new Monday.com form to the modal system:
 - **File uploads** are handled within Monday.com forms (notably aid application)
 - **No server-side form processing** on KCCF website - all handled by external services
 
-### Troubleshooting Forms
-- **Form not displaying**: Check Marketing cookies are enabled
-- **Modal not opening**: Verify FormModalProvider is properly wrapped in layout
-- **Form not loading**: Check external service URLs are accessible
-- **Submission not working**: Verify on external service dashboard (Monday.com, Mailchimp, Zeffy, GiveLively)
-- **Cookie banner not appearing**: Clear browser storage and reload in incognito mode
+### Form Troubleshooting
+| Issue | Solution |
+|-------|----------|
+| Form not displaying | Check Marketing cookies are enabled |
+| Modal not opening | Verify FormModalProvider is properly wrapped in layout |
+| Form not loading | Check external service URLs are accessible |
+| Submission not working | Verify on external service dashboard |
+| Cookie banner not appearing | Clear browser storage and reload in incognito mode |
 
 ## SEO optimization
 The site is optimized for corporate partnerships and CSR programs:
@@ -634,19 +662,66 @@ The aid application previously included a complex multi-step form. It's now simp
 - Aid applications use Monday.com form with built-in file upload capabilities
 
 ## Troubleshooting
-- Port already in use: stop the other service or change the port mapping in `docker-compose.yml`.
-- ESLint warnings during build: `next.config.js` is set to allow builds to complete; use `npm run lint` locally to fix issues.
-- Node version mismatch: ensure Node 20.x locally to match Docker.
-- Dark mode not working: check `src/contexts/ThemeContext.tsx` and ensure theme toggle is properly connected.
-- Cookie consent issues: verify `src/contexts/CookieConsentContext.tsx` is properly initialized in layout.
-- Donation modal not loading: ensure marketing cookies are enabled in cookie preferences.
-- Form modals not opening: verify `FormModalProvider` is properly wrapped in layout and `FormModal` component is included.
-- Form modal scrolling issues: check modal height settings in `FormModal.tsx` (currently set to 85vh).
-- Monday.com forms not loading: ensure marketing cookies are enabled and form URLs are correct in `FormModalContext.tsx`.
 
-## Maintainers and handoff
+| Issue | Solution |
+|-------|----------|
+| Port already in use | Stop other services using port 3000 or use a different port |
+| ESLint warnings during build | `next.config.ts` allows builds to complete; run `npm run lint` locally to fix issues |
+| Node version mismatch | Ensure Node 20.x is installed locally (use `node -v` to check) |
+| Dark mode not working | Check `src/contexts/ThemeContext.tsx` and ensure theme toggle is properly connected |
+| Cookie consent issues | Verify `src/contexts/CookieConsentContext.tsx` is properly initialized in layout |
+| Donation modal not loading | Ensure marketing cookies are enabled in cookie preferences |
+| Form modals not opening | Verify `FormModalProvider` is wrapped in layout and `FormModal` component is included |
+| Form modal scrolling issues | Check modal height settings in `FormModal.tsx` |
+| Monday.com forms not loading | Ensure marketing cookies are enabled and form URLs are correct in `FormModalContext.tsx` |
+| Build fails on GitHub Actions | Check workflow logs in Actions tab; verify Node version matches (20.x) |
+| GitHub Pages deployment fails | Ensure the `ci` job passes; check permissions and Pages configuration |
+
+## Security
+
+This repository uses GitHub's security features available for public repositories:
+
+### Code Scanning
+- **CodeQL Analysis**: Automated security scanning runs on every push and PR to main
+- **Languages covered**: JavaScript/TypeScript and GitHub Actions workflows
+- **Schedule**: Also runs weekly on Mondays for ongoing security monitoring
+
+### Reporting Security Issues
+If you discover a security vulnerability, please report it responsibly:
+1. **Do not** create a public GitHub issue
+2. Contact the maintainers directly via the contact information on [thekccf.org](https://thekccf.org/contact)
+3. Allow time for the issue to be addressed before public disclosure
+
+## Contributing
+
+We welcome contributions! Here's how to get started:
+
+### Getting Started
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/KCCF-web.git`
+3. Install dependencies: `npm install`
+4. Create a feature branch: `git checkout -b feature/your-feature-name`
+5. Make your changes
+6. Run lint and build: `npm run lint && npm run build`
+7. Commit your changes with descriptive messages
+8. Push to your fork and create a Pull Request
+
+### Pull Request Guidelines
+- Ensure all CI checks pass (lint, type-check, build)
+- Provide a clear description of your changes
+- Reference any related issues
+- Keep changes focused and atomic
+- Follow existing code style and conventions
+
+### Code Style
+- TypeScript for all source files
+- Follow the ESLint configuration
+- Use descriptive variable and function names
+- Add comments for complex logic
+
+## Maintainers
 - Primary owner: KCCF web team
-- For deployment credentials/secrets, update your hosting provider’s environment settings (do not commit secrets).
+- Repository: [koenig-childhood-cancer-foundation/KCCF-web](https://github.com/koenig-childhood-cancer-foundation/KCCF-web)
 
 ## License
 All rights reserved. Content and code are the property of Koenig Childhood Cancer Foundation unless otherwise noted.
