@@ -21,7 +21,7 @@ interface FormConfig {
 
 export const FORM_CONFIGS: Record<FormType, FormConfig> = {
   'camp-camper': {
-    title: 'Thank you for taking the first step to register your child for camp!',
+    title: 'Thank you for registering your child for camp!',
     subtitle: 'The form may take a few seconds to load.',
     src: 'https://forms.monday.com/forms/embed/41086441b740b6e179cbde8b574bd794?r=use1',
     height: '1550px'
