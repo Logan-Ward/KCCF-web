@@ -64,7 +64,7 @@ export const FORM_CONFIGS: Record<FormType, FormConfig> = {
   },
   'aid-application': {
     title: 'Apply for Financial Assistance',
-    subtitle: 'Complete this form to apply for financial assistance during your child\'s cancer treatment.',
+    subtitle: 'We are grateful to be part of your challenging journey. This form may take a few minutes to load.',
     src: 'https://forms.monday.com/forms/embed/972de98e599d383218e348dd923eec38?r=use1',
     height: '2500px'
   }
