@@ -35,7 +35,7 @@ function GiveLivelyWidget() {
   }, [])
   
   return (
-    <div className="h-[600px] sm:h-[650px] overflow-auto p-4">
+    <div id="give-lively-widget" className="gl-simple-donation-widget h-[600px] sm:h-[650px] overflow-auto p-4">
       {/* The GiveLively script will inject the widget here */}
     </div>
   )
