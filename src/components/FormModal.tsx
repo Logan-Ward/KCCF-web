@@ -85,7 +85,7 @@ export default function FormModal() {
                 </div>
               )}
               <iframe
-                className={`flex-1 w-full ${!iframeLoaded ? 'invisible' : ''}`}
+                className={`flex-1 w-full ${!iframeLoaded ? 'hidden' : ''}`}
                 src={config.src}
                 title={config.title}
                 frameBorder={0}
