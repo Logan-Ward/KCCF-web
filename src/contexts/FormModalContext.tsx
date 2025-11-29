@@ -63,8 +63,8 @@ export const FORM_CONFIGS: Record<FormType, FormConfig> = {
     height: '1100px'
   },
   'aid-application': {
-    title: 'Thank you for reaching out to apply for assistance!',
-    subtitle: 'The form may take a few seconds to load.',
+    title: 'Apply for Financial Assistance',
+    subtitle: 'We are grateful to be part of your challenging journey. This form may take a few minutes to load.',
     src: 'https://forms.monday.com/forms/embed/972de98e599d383218e348dd923eec38?r=use1',
     height: '2500px'
   }
