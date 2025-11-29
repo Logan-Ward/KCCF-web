@@ -8,7 +8,7 @@ import { useDonationModal } from '@/contexts/DonationModalContext'
 import { useCookieConsent } from '@/contexts/CookieConsentContext'
 
 type DonationProvider = 'zeffy' | 'givelively'
- 
+
 
 // All previous multi-step and amount form logic removed in favor of Zeffy embed
 
@@ -22,11 +22,11 @@ export default function DonationModal() {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeModal()
     }
-    
+
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
     }
-    
+
     return () => {
       document.removeEventListener('keydown', handleEscape)
     }
@@ -40,21 +40,21 @@ export default function DonationModal() {
 
   const modalContent = (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto"
-         style={{ WebkitOverflowScrolling: 'touch' }}>
+      style={{ WebkitOverflowScrolling: 'touch' }}>
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={closeModal}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex"
-           style={{ WebkitOverflowScrolling: 'touch' }}>
+        style={{ WebkitOverflowScrolling: 'touch' }}>
         {/* Campaign Card - Left Side */}
-         <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#732154] to-violet-600 text-white p-8 flex-col justify-between">
+        <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#732154] to-violet-600 text-white p-8 flex-col justify-between">
           <div>
             <div className="mb-6">
-              <Image 
+              <Image
                 src="/images/cropped-Koenig-Foundation-Logo-01.png"
                 alt="Koenig Childhood Cancer Foundation Logo"
                 className="h-12 w-auto mb-4"
@@ -62,9 +62,9 @@ export default function DonationModal() {
                 height={48}
               />
             </div>
-            
+
             <div className="campaign-image-holder mb-6">
-              <Image 
+              <Image
                 className="w-full h-64 object-cover rounded-xl shadow-lg"
                 src="/images/ElanaOliviaGiftBags-scaled.jpg"
                 alt="Elana and Olivia preparing gift bags"
@@ -72,19 +72,19 @@ export default function DonationModal() {
                 height="289"
               />
             </div>
-            
+
             <div className="campaign-body">
               <h2 className="text-2xl font-bold mb-4">
                 {campaign || "Help hospitalized children with cancer"}
               </h2>
               <p className="text-white/90 leading-relaxed">
-                Your donation helps provide support and resources to hospitalized children battling cancer. 
-                Your generosity brings joy, comfort, and hope to children during their difficult hospital stays. 
+                Your donation helps provide support and resources to hospitalized children battling cancer.
+                Your generosity brings joy, comfort, and hope to children during their difficult hospital stays.
                 Every donation makes a real difference in a child's life.
               </p>
             </div>
           </div>
-          
+
           <div className="mt-8 pt-6 border-t border-white/20">
             <div className="flex items-center justify-between text-sm text-white/80">
               <div className="flex items-center space-x-4">
@@ -103,10 +103,10 @@ export default function DonationModal() {
               </div>
             </div>
             <div className="mt-4">
-              <Link 
+              <Link
                 href="/donate"
                 onClick={closeModal}
-                className="inline-flex items-center text-sm text-white/90 hover:text-white underline underline-offset-2 transition-colors"
+                className="inline-flex items-center text-md font-bold text-white/90 hover:text-white underline underline-offset-2 transition-colors"
               >
                 Other ways to donate
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +116,7 @@ export default function DonationModal() {
             </div>
           </div>
         </div>
-        
+
         {/* Donation Form - Right Side replaced entirely by Zeffy */}
         <div className="lg:w-1/2 w-full flex flex-col">
           <div className="bg-white dark:bg-gray-800">
@@ -143,77 +143,75 @@ export default function DonationModal() {
               <>
                 {/* Provider Selection */}
                 <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">Choose your preferred donation platform:</p>
+                  <p className="text-sm text-center font-bold text-black mb-3">Choose your preferred donation platform:</p>
                   <div className="flex space-x-4">
-                     <div className="flex flex-col">
-                       <button
-                         onClick={() => setSelectedProvider('zeffy')}
-                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${
-                           selectedProvider === 'zeffy'
-                             ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
-                             : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
-                         }`}
-                       >
-                         Zeffy
-                       </button>
-                       <ul className="mt-2 text-xs text-gray-500 dark:text-gray-400 list-disc list-inside">
-                         <li>No fees</li>
-                         <li>Accepts international donations</li>
-                       </ul>
-                     </div>
-                     <div className="flex flex-col">
-                       <button
-                         onClick={() => setSelectedProvider('givelively')}
-                         className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${
-                           selectedProvider === 'givelively'
-                             ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
-                             : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
-                         }`}
-                       >
-                         GiveLively
-                       </button>
-                       <ul className="mt-2 text-xs text-gray-500 dark:text-gray-400 list-disc list-inside">
-                         <li>Standard processing fees</li>
-                         <li>Accepts PayPal / Venmo / DAFs</li>
-                       </ul>
-                     </div>
+                    <div className="flex flex-col">
+                      <button
+                        onClick={() => setSelectedProvider('zeffy')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${selectedProvider === 'zeffy'
+                          ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
+                          : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
+                          }`}
+                      >
+                        Zeffy
+                      </button>
+                      <ul className="mt-2 text-xs text-gray-500 dark:text-gray-400 list-disc list-inside">
+                        <li>No fees</li>
+                        <li>Accepts international donations</li>
+                      </ul>
+                    </div>
+                    <div className="flex flex-col">
+                      <button
+                        onClick={() => setSelectedProvider('givelively')}
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer ${selectedProvider === 'givelively'
+                          ? 'bg-[#732154] text-white hover:bg-[#732154]/90'
+                          : 'bg-white dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-500'
+                          }`}
+                      >
+                        GiveLively
+                      </button>
+                      <ul className="mt-2 text-xs text-gray-500 dark:text-gray-400 list-disc list-inside">
+                        <li>Standard processing fees</li>
+                        <li>Accepts PayPal / Venmo / DAFs</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                
+
                 {selectedProvider === 'zeffy' ? (
-                <div className="h-[600px] sm:h-[650px] overflow-auto">
-                  <iframe
-                    className="block w-full h-full max-w-full border-0"
-                    src="https://www.zeffy.com/embed/donation-form/donate-to-make-a-difference-18649"
-                    title="Zeffy donation form"
-                    scrolling="yes"
-                    allow="payment"
-                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                    style={{
-                      WebkitOverflowScrolling: 'touch',
-                      overflow: 'auto',
-                      minHeight: '600px',
-                      height: '100%'
-                    }}
-                  />
-                </div>
-              ) : (
-                <div className="h-[600px] sm:h-[650px] overflow-auto">
-                  <iframe
-                    className="block w-full h-full max-w-full border-0"
-                    src="https://secure.givelively.org/donate/koenig-childhood-cancer-foundation/donate-to-save-lives?ref=sd_widget"
-                    title="GiveLively donation form"
-                    scrolling="yes"
-                    allow="payment"
-                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                    style={{
-                      WebkitOverflowScrolling: 'touch',
-                      overflow: 'auto',
-                      minHeight: '600px',
-                      height: '100%'
-                    }}
-                  />
-                </div>
+                  <div className="h-[600px] sm:h-[650px] overflow-auto">
+                    <iframe
+                      className="block w-full h-full max-w-full border-0"
+                      src="https://www.zeffy.com/embed/donation-form/donate-to-make-a-difference-18649"
+                      title="Zeffy donation form"
+                      scrolling="yes"
+                      allow="payment"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                      style={{
+                        WebkitOverflowScrolling: 'touch',
+                        overflow: 'auto',
+                        minHeight: '600px',
+                        height: '100%'
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className="h-[600px] sm:h-[650px] overflow-auto">
+                    <iframe
+                      className="block w-full h-full max-w-full border-0"
+                      src="https://secure.givelively.org/donate/koenig-childhood-cancer-foundation/donate-to-save-lives?ref=sd_widget"
+                      title="GiveLively donation form"
+                      scrolling="yes"
+                      allow="payment"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                      style={{
+                        WebkitOverflowScrolling: 'touch',
+                        overflow: 'auto',
+                        minHeight: '600px',
+                        height: '100%'
+                      }}
+                    />
+                  </div>
                 )}
               </>
             ) : (
