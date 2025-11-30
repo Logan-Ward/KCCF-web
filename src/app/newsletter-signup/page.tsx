@@ -24,7 +24,7 @@ export default function NewsletterSignup() {
             </p>
 
             {/* Embedded Newsletter Form */}
-            <div className="relative min-h-[500px]">
+            <div className="relative min-h-[650px]">
               {!iframeLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white">
                   <Spinner text="Loading form..." />
@@ -34,7 +34,7 @@ export default function NewsletterSignup() {
                 className={`w-full border-0 ${!iframeLoaded ? 'invisible' : ''}`}
                 src="https://thekccf.us17.list-manage.com/subscribe?u=041a777be61cc7e1bc20e3517&id=8696f27783"
                 title="Newsletter Signup Form"
-                height="500"
+                height="650"
                 scrolling="auto"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
                 onLoad={() => setIframeLoaded(true)}
