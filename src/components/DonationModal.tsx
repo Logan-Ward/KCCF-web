@@ -8,40 +8,6 @@ import { useDonationModal } from '@/contexts/DonationModalContext'
 
 type DonationProvider = 'zeffy' | 'givelively'
 
-// Helper function to clean up GiveLively widget and script
-function cleanupGiveLivelyWidget(scriptElement?: HTMLScriptElement) {
-  const widget = document.querySelector('.gl-simple-donation-widget')
-  if (widget) {
-    widget.remove()
-  }
-  if (scriptElement?.parentNode) {
-    scriptElement.parentNode.removeChild(scriptElement)
-  }
-}
-
-// GiveLively widget component that loads the donation form via script
-function GiveLivelyWidget() {
-  useEffect(() => {
-    // Clean up any existing widget before loading
-    cleanupGiveLivelyWidget()
-    
-    // Create and load the GiveLively script
-    const gl = document.createElement('script')
-    gl.src = 'https://secure.givelively.org/widgets/simple_donation/koenig-childhood-cancer-foundation.js?show_suggested_amount_buttons=true&show_in_honor_of=true&address_required=false&suggested_donation_amounts[]=25&suggested_donation_amounts[]=50&suggested_donation_amounts[]=100&suggested_donation_amounts[]=250'
-    document.head.appendChild(gl)
-    
-    return () => cleanupGiveLivelyWidget(gl)
-  }, [])
-  
-  return (
-    <div id="give-lively-widget" className="gl-simple-donation-widget h-[600px] sm:h-[650px] overflow-auto p-4">
-      {/* The GiveLively script will inject the widget here */}
-    </div>
-  )
-}
-
-// All previous multi-step and amount form logic removed in favor of Zeffy embed
-
 export default function DonationModal() {
   const { isOpen, closeModal, campaign } = useDonationModal()
   const [selectedProvider, setSelectedProvider] = useState<DonationProvider>('zeffy')
@@ -226,7 +192,22 @@ export default function DonationModal() {
                 />
               </div>
             ) : (
-              <GiveLivelyWidget />
+              <div className="h-[600px] sm:h-[650px] overflow-auto">
+                <iframe
+                  className="block w-full h-full max-w-full border-0"
+                  src="https://secure.givelively.org/donate/koenig-childhood-cancer-foundation"
+                  title="GiveLively donation form"
+                  scrolling="yes"
+                  allow="payment"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  style={{
+                    WebkitOverflowScrolling: 'touch',
+                    overflow: 'auto',
+                    minHeight: '600px',
+                    height: '100%'
+                  }}
+                />
+              </div>
             )}
           </div>
         </div>
