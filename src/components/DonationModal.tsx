@@ -212,10 +212,10 @@ export default function DonationModal() {
             <div className="px-6 py-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
               <p className="text-base font-bold text-center text-gray-900 dark:text-white mb-3">Choose your preferred donation platform:</p>
               <div className="flex justify-center gap-4">
-                 <div className="flex flex-col items-center w-40">
+                 <div className="flex flex-col items-center">
                    <button
                      onClick={() => setSelectedProvider('zeffy')}
-                     className={`w-full px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer border-2 ${
+                     className={`w-28 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer border-2 ${
                        selectedProvider === 'zeffy'
                          ? 'bg-[#732154] text-white hover:bg-[#732154]/90 border-[#732154]'
                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 border-[#732154]'
@@ -223,15 +223,15 @@ export default function DonationModal() {
                    >
                      Zeffy
                    </button>
-                   <ul className="mt-2 text-xs text-gray-700 dark:text-gray-300 list-disc list-inside">
+                   <ul className="mt-2 text-xs text-gray-700 dark:text-gray-300 list-disc list-inside whitespace-nowrap">
                      <li>No fees</li>
-                     <li>Accepts international donations</li>
+                     <li>International donations</li>
                    </ul>
                  </div>
-                 <div className="flex flex-col items-center w-40">
+                 <div className="flex flex-col items-center">
                    <button
                      onClick={() => setSelectedProvider('givelively')}
-                     className={`w-full px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer border-2 ${
+                     className={`w-28 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-md cursor-pointer border-2 ${
                        selectedProvider === 'givelively'
                          ? 'bg-[#732154] text-white hover:bg-[#732154]/90 border-[#732154]'
                          : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 border-[#732154]'
@@ -239,9 +239,9 @@ export default function DonationModal() {
                    >
                      GiveLively
                    </button>
-                   <ul className="mt-2 text-xs text-gray-700 dark:text-gray-300 list-disc list-inside">
-                     <li>Standard processing fees</li>
-                     <li>Accepts PayPal / Venmo / DAFs</li>
+                   <ul className="mt-2 text-xs text-gray-700 dark:text-gray-300 list-disc list-inside whitespace-nowrap">
+                     <li>Processing fees</li>
+                     <li>PayPal / Venmo / DAFs</li>
                    </ul>
                  </div>
               </div>
