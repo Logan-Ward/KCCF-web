@@ -3,12 +3,12 @@ import HomeContent from './HomeContent';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "https://thekccf.org"),
-  title: "Koenig Childhood Cancer Foundation - Life-saving support for children battling cancer",
-  description: "Life-saving financial and emotional support for children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
+  title: "Koenig Childhood Cancer Foundation - Life-saving financial and emotional support to children battling cancer",
+  description: "Life-saving financial and emotional support to children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
   keywords: ["childhood cancer", "cancer foundation", "financial aid", "cancer support", "Elana Koenig", "KCCF"],
   openGraph: {
-    title: "Koenig Childhood Cancer Foundation - Life-saving support for children battling cancer",
-    description: "Life-saving financial and emotional support for children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
+    title: "Koenig Childhood Cancer Foundation - Life-saving financial and emotional support to children battling cancer",
+    description: "Life-saving financial and emotional support to children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
     type: "website",
     url: process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "https://thekccf.org",
     images: [
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Koenig Childhood Cancer Foundation - Life-saving support for children battling cancer",
-    description: "Life-saving financial and emotional support for children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
+    title: "Koenig Childhood Cancer Foundation - Life-saving financial and emotional support to children battling cancer",
+    description: "Life-saving financial and emotional support to children battling cancer. Founded by 11-year-old cancer survivor Elana Koenig in 2020.",
     images: ["/opengraph-image"],
   },
   robots: {

@@ -42,7 +42,7 @@ export default function HomeContent() {
           <div className="max-w-4xl mx-auto lg:mx-0 lg:ml-8">
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-violet-600 dark:text-saffron-400">
-              Life-saving support for children battling cancer
+              Life-saving financial and emotional support to children battling cancer.
             </h1>
 
             <p className="text-xl md:text-2xl mb-12 text-black dark:text-gray-200 max-w-3xl mx-auto lg:mx-0 leading-relaxed font-normal">
