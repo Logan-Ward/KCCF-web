@@ -210,7 +210,7 @@ export default function DonationModal() {
             {/* Zeffy/GiveLively donation forms are loaded as strictly necessary services */}
             {/* Provider Selection */}
             <div className="px-6 py-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-              <p className="text-base text-center font-bold text-gray-900 dark:text-white mb-3">Choose your preferred donation platform:</p>
+              <p className="text-base font-bold text-center text-gray-900 dark:text-white mb-3">Choose your preferred donation platform:</p>
               <div className="flex space-x-4">
                  <div className="flex flex-col">
                    <button
