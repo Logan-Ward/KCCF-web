@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,39 +8,52 @@ import { useDonationModal } from '@/contexts/DonationModalContext'
 
 type DonationProvider = 'zeffy' | 'givelively'
 
-// Helper function to clean up GiveLively widget and script
-function cleanupGiveLivelyWidget(scriptElement?: HTMLScriptElement) {
-  const widget = document.querySelector('.gl-simple-donation-widget')
-  if (widget) {
-    widget.remove()
-  }
-  if (scriptElement?.parentNode) {
-    scriptElement.parentNode.removeChild(scriptElement)
-  }
-}
-
 // GiveLively widget component that loads the donation form via script
 function GiveLivelyWidget() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const scriptRef = useRef<HTMLScriptElement | null>(null)
+  
   useEffect(() => {
-    // Clean up any existing widget before loading
-    cleanupGiveLivelyWidget()
+    if (!containerRef.current) return
     
     // Create and load the GiveLively script
     const gl = document.createElement('script')
     gl.src = 'https://secure.givelively.org/widgets/simple_donation/koenig-childhood-cancer-foundation.js?show_suggested_amount_buttons=true&show_in_honor_of=true&address_required=false&suggested_donation_amounts[]=25&suggested_donation_amounts[]=50&suggested_donation_amounts[]=100&suggested_donation_amounts[]=250'
+    scriptRef.current = gl
     document.head.appendChild(gl)
     
-    return () => cleanupGiveLivelyWidget(gl)
+    return () => {
+      // Clean up script
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        try {
+          scriptRef.current.parentNode.removeChild(scriptRef.current)
+        } catch (e) {
+          // Already removed
+        }
+      }
+      
+      // Clean up widget content - let React handle the container removal
+      if (containerRef.current) {
+        try {
+          // Clear inner HTML to prevent React from trying to remove GiveLively's DOM
+          containerRef.current.innerHTML = ''
+        } catch (e) {
+          // Already cleaned
+        }
+      }
+    }
   }, [])
   
   return (
-    <div id="give-lively-widget" className="gl-simple-donation-widget h-[600px] sm:h-[650px] overflow-auto p-4">
+    <div 
+      ref={containerRef}
+      id="give-lively-widget" 
+      className="gl-simple-donation-widget h-[600px] sm:h-[650px] overflow-auto p-4"
+    >
       {/* The GiveLively script will inject the widget here */}
     </div>
   )
 }
-
-// All previous multi-step and amount form logic removed in favor of Zeffy embed
 
 export default function DonationModal() {
   const { isOpen, closeModal, campaign } = useDonationModal()
