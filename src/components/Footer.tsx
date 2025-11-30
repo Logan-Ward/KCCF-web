@@ -20,6 +20,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block hover:text-white transition-colors"
+                aria-label="View our location on Google Maps (opens in new tab)"
               >
                 <p>1175 York Ave., Suite 15E</p>
                 <p>New York, NY 10065</p>
