@@ -229,7 +229,7 @@ export default function Navigation() {
           </div>
 
           {/* Right side - Search, Donate button and Theme Toggle (Desktop Only) */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={openSearchModal}
               aria-label="Search"
@@ -261,7 +261,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-3">
             <button
               onClick={openSearchModal}
               aria-label="Search"
