@@ -1,9 +1,13 @@
 "use client"
 
 import Image from 'next/image';
+import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
+import { useFormModal } from '@/contexts/FormModalContext';
 
 export default function Volunteer() {
+  const { openModal } = useFormModal()
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section with Background */}
@@ -37,9 +41,12 @@ export default function Volunteer() {
 
             <div className="prose prose-lg max-w-none text-violet-700">
               <p className="text-xl leading-relaxed mb-8">
-                Koenig Childhood Cancer Foundation (KCCF) is a 100% volunteer-run organization. 
-                Volunteers are at the heart of everything we do — your time, energy, and commitment 
-                directly impact children battling cancer and their families.
+                Koenig Childhood Cancer Foundation (KCCF) is a 100% volunteer-run organization. Volunteers are at the heart of everything we do — your time, energy, and commitment directly impact children battling cancer and their families.
+              </p>
+
+              <p className="mb-6">
+                Whether you have a few hours a month or want to make a more significant commitment,
+                there are many ways to get involved and help children battling cancer and their families.
               </p>
 
               <div className="bg-saffron-50 rounded-lg p-6 my-8">
@@ -202,6 +209,53 @@ export default function Volunteer() {
                 <li>• Specialized skills and expertise</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Volunteer Application Form */}
+      <section className="py-16 bg-violet-500 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">Become a Volunteer</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Individual Volunteering Card */}
+            <div 
+              onClick={() => openModal('volunteer')}
+              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 flex flex-col cursor-pointer group"
+            >
+              <h3 className="text-2xl font-bold text-violet-700 mb-4 text-center">Individual ⭐</h3>
+              <p className="text-violet-600 mb-6 flex-grow">
+                Individual volunteering includes opportunities to contribute your skills and/or participate in events that support our mission.
+              </p>
+              <div className="text-center mt-auto">
+                <span className="inline-flex items-center text-violet-600 group-hover:text-violet-700 font-semibold transition-colors">
+                  Click to Apply
+                  <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            {/* Group Volunteering Card */}
+            <Link 
+              href="/crazy-socks"
+              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 flex flex-col cursor-pointer group"
+            >
+              <h3 className="text-2xl font-bold text-violet-700 mb-4 text-center">Group 🤝</h3>
+              <p className="text-violet-600 mb-6 flex-grow">
+                Group volunteering usually involves corporate sponsorship of care bag supplies and assembling packages, writing notes for children in the hospital. Check with your company's Corporate Social Responsibility team.
+              </p>
+              <div className="text-center mt-auto">
+                <span className="inline-flex items-center text-violet-600 group-hover:text-violet-700 font-semibold transition-colors">
+                  Click to learn
+                  <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
