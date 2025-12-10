@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
+import FormButton from '@/components/FormButton';
 import { useFormModal } from '@/contexts/FormModalContext';
 
 export default function Volunteer() {
