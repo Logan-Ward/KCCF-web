@@ -34,6 +34,7 @@ export default function Navigation() {
     if ('formType' in dropdownItem) {
       return (
         <button
+          type="button"
           key={dropdownItem.name}
           onClick={() => {
             openModal(dropdownItem.formType)
