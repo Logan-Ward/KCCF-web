@@ -6,6 +6,11 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '@/contexts/ThemeContext'
+import { useFormModal, FormType } from '@/contexts/FormModalContext'
+
+type DropdownItem = 
+  | { name: string; href: string }
+  | { name: string; formType: FormType }
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,6 +19,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null)
   const { theme } = useTheme()
+  const { openModal } = useFormModal()
   const pathname = usePathname()
   const isHomePage = pathname === '/'
 
@@ -43,7 +49,7 @@ export default function Navigation() {
     }
   }, [isMenuOpen])
 
-  const navItems = [
+  const navItems: Array<{ name: string; href: string; dropdown?: DropdownItem[] }> = [
     { name: 'HOME', href: '/' },
     { 
       name: 'ABOUT', 
@@ -68,8 +74,8 @@ export default function Navigation() {
       dropdown: [
         { name: 'Contact Us', href: '/contact' },
         { name: 'Volunteer', href: '/volunteer' },
-        { name: 'Sponsor Crazy Socks', href: '/crazy-socks/#sponsorform' },
-        { name: 'Book Elana to Speak', href: '/our-story/#bookelanaformsection' },
+        { name: 'Sponsor Gift Bag Event', formType: 'crazy-socks-sponsor' },
+        { name: 'Book Elana for Event', formType: 'book-elana' },
         { name: 'Newsletter Signup', href: '/newsletter-signup' },
       ]
     },
@@ -214,16 +220,36 @@ export default function Navigation() {
                       }
                     }}
                   >
-                    {item.dropdown.map((dropdownItem) => (
-                      <Link
-                        key={dropdownItem.name}
-                        href={dropdownItem.href}
-                        role="menuitem"
-                        className="block px-4 py-3 text-sm transition-colors duration-150 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-inset focus:bg-gray-50 dark:focus:bg-gray-700"
-                      >
-                        {dropdownItem.name}
-                      </Link>
-                    ))}
+                    {item.dropdown.map((dropdownItem) => {
+                      const itemClasses = "block px-4 py-3 text-sm transition-colors duration-150 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-inset focus:bg-gray-50 dark:focus:bg-gray-700"
+                      
+                      if ('formType' in dropdownItem) {
+                        return (
+                          <button
+                            key={dropdownItem.name}
+                            onClick={() => {
+                              openModal(dropdownItem.formType)
+                              setActiveDropdown(null)
+                            }}
+                            role="menuitem"
+                            className={`${itemClasses} w-full text-left`}
+                          >
+                            {dropdownItem.name}
+                          </button>
+                        )
+                      }
+                      
+                      return (
+                        <Link
+                          key={dropdownItem.name}
+                          href={dropdownItem.href}
+                          role="menuitem"
+                          className={itemClasses}
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      )
+                    })}
                   </div>
                 )}
               </div>
@@ -327,16 +353,35 @@ export default function Navigation() {
                       </button>
                       {mobileExpandedItems.includes(item.name) && (
                         <div className="ml-4 mt-2 space-y-2">
-                          {item.dropdown.map((dropdownItem) => (
-                            <Link
-                              key={dropdownItem.name}
-                              href={dropdownItem.href}
-                              className="block px-4 py-3 text-sm rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 touch-manipulation"
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              {dropdownItem.name}
-                            </Link>
-                          ))}
+                          {item.dropdown.map((dropdownItem) => {
+                            const itemClasses = "block px-4 py-3 text-sm rounded-lg transition-colors duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 touch-manipulation"
+                            
+                            if ('formType' in dropdownItem) {
+                              return (
+                                <button
+                                  key={dropdownItem.name}
+                                  onClick={() => {
+                                    openModal(dropdownItem.formType)
+                                    setIsMenuOpen(false)
+                                  }}
+                                  className={`${itemClasses} w-full text-left`}
+                                >
+                                  {dropdownItem.name}
+                                </button>
+                              )
+                            }
+                            
+                            return (
+                              <Link
+                                key={dropdownItem.name}
+                                href={dropdownItem.href}
+                                className={itemClasses}
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {dropdownItem.name}
+                              </Link>
+                            )
+                          })}
                         </div>
                       )}
                     </div>
