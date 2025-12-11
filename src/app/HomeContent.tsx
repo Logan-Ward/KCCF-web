@@ -42,7 +42,7 @@ export default function HomeContent() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-16">
               <Link
                 href="/aid"
-                className="group btn-violet py-4 px-10 text-lg font-semibold"
+                className="group btn-violet py-4 px-10 text-lg"
               >
                 <span>Family Assistance</span>
                 <svg className="ml-2 w-5 h-5 btn-icon-slide" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,10 +101,10 @@ export default function HomeContent() {
               </div>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link href="/our-story" className="btn-violet py-3 px-8 text-base font-semibold">
+                <Link href="/our-story" className="btn-violet py-3 px-8 text-base">
                   Read Her Story
                 </Link>
-                <Link href="/our-story/#bookelanaformsection" className="btn-transparent py-3 px-8 text-base font-semibold">
+                <Link href="/our-story/#bookelanaformsection" className="btn-transparent py-3 px-8 text-base">
                   Book Elana to Speak
                 </Link>
               </div>
