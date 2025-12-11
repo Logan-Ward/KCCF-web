@@ -8,7 +8,6 @@ import ThemeToggle from './ThemeToggle'
 import { useTheme } from '@/contexts/ThemeContext'
 import { useSearchModal } from '@/contexts/SearchModalContext'
 import { useFormModal, FormType } from '@/contexts/FormModalContext'
-import { useSearchModal } from '@/contexts/SearchModalContext'
 
 type DropdownItem = 
   | { name: string; href: string }
@@ -23,7 +22,6 @@ export default function Navigation() {
   const { theme } = useTheme()
   const { openModal: openSearchModal } = useSearchModal()
   const { openModal } = useFormModal()
-  const { openModal: openSearchModal } = useSearchModal()
   const pathname = usePathname()
   const isHomePage = pathname === '/'
 
