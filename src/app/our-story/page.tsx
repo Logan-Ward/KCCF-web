@@ -216,10 +216,6 @@ export default function OurStory() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Invite Elana to share her powerful story of hope, resilience, and the importance of supporting families facing childhood cancer.
-              </p>
-
               <FormButton
                 formType="book-elana"
                 variant="violet"
