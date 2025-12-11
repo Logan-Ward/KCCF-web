@@ -121,7 +121,7 @@ GitHub Copilot supports multiple AI models through its model selector feature. A
 
 **⚠️ Important: GitHub Copilot Cross-Repository Limitation**
 
-When using GitHub Copilot to work on issues in this repository, you may encounter the following error on pull requests created from forked repositories:
+When working with pull requests created from forked repositories, you may encounter the following error when trying to use GitHub Copilot features:
 
 > ⚠️ **Copilot isn't available for cross-repository pull requests**
 
@@ -154,7 +154,10 @@ GitHub restricts Copilot's AI features (including `@copilot` mentions, Copilot c
    ```bash
    git checkout -b feature/your-feature-name
    ```
-4. Make your changes and push to the main repository
+4. Make your changes and push to the main repository:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 5. Create a pull request from your branch to `main`
 
 **✅ Benefits:**
@@ -175,7 +178,10 @@ GitHub restricts Copilot's AI features (including `@copilot` mentions, Copilot c
    cd KCCF-web
    ```
 3. Create a feature branch in your fork
-4. Make your changes and push to your fork
+4. Make your changes and push to your fork:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 5. Create a pull request from your fork to the main repository
 
 **⚠️ Limitations:**
@@ -359,27 +365,43 @@ When adding new features, ensure they work across:
    - Request review from human reviewers instead of `@copilot`
    - Note: `@copilot review` and other PR-based Copilot features will remain unavailable
 
-3. **Sync Your Fork (If You Already Have Access):**
-   - If you have repository access but accidentally created a fork, you can:
+3. **Migrate Fork to Branch (If You Already Have Access):**
+   - If you have repository access but accidentally created a fork, you can migrate your commits:
+   
+   **Prerequisites:** You need to have both your fork and the main repository set up locally.
+   
    ```bash
-   # Add main repository as remote
-   # If you already have an upstream remote, use:
-   # git remote set-url upstream https://github.com/koenig-childhood-cancer-foundation/KCCF-web.git
-   git remote add upstream https://github.com/koenig-childhood-cancer-foundation/KCCF-web.git
+   # Step 1: In your fork directory, note your commit SHAs
+   # Run this BEFORE switching to the main repository:
+   git log --oneline
+   # Copy the SHA(s) of your commits (e.g., abc1234, def5678)
    
-   # Create a new branch in the main repository
-   git fetch upstream
-   git checkout -b feature/your-feature upstream/main
+   # Step 2: Clone the main repository (if you haven't already)
+   # In a different directory:
+   git clone https://github.com/koenig-childhood-cancer-foundation/KCCF-web.git kccf-main
+   cd kccf-main
    
-   # Cherry-pick your changes from the fork
-   # First, find your commit SHA(s) using: git log --oneline
-   # Then cherry-pick commits:
-   git cherry-pick <commit-sha>
-   # For multiple individual commits: git cherry-pick <sha1> <sha2> <sha3>
-   # For a range of consecutive commits: git cherry-pick <start-sha>^..<end-sha>
+   # Step 3: Add your fork as a remote to reference its commits
+   git remote add fork https://github.com/YOUR-USERNAME/KCCF-web.git
+   git fetch fork
    
-   # Push to main repository
-   git push upstream feature/your-feature
+   # Step 4: Create a new branch in the main repository
+   git checkout -b feature/your-feature-name main
+   
+   # Step 5: Cherry-pick your commits using the SHAs you noted earlier
+   # Single commit:
+   git cherry-pick abc1234
+   # Multiple individual commits:
+   git cherry-pick abc1234 def5678 ghi9012
+   # Range of consecutive commits:
+   git cherry-pick abc1234^..def5678
+   
+   # Step 6: Verify your changes with git remote -v and git log
+   git remote -v  # Should show 'origin' pointing to main repository
+   git log --oneline -5  # Verify your commits are present
+   
+   # Step 7: Push to main repository
+   git push origin feature/your-feature-name
    ```
 
 ### Other Common Issues
