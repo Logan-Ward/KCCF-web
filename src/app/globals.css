@@ -266,14 +266,14 @@ body {
   
 /*
  * Standardized button hover effects:
- * - Translate upward slightly (rise)
+ * - Translate upward slightly (rise) for animated buttons
  * - Increase shadow depth
  * - Adjust background color (lighten for darker, darken for lighter)
  */
 
   /* Violet Button - For dark colored primary buttons */
   .btn-violet {
-      display: inline-flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: calc(infinity * 1px);
@@ -287,6 +287,9 @@ body {
   .btn-violet:hover {
     background-color: var(--color-kccf-purple-hover);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-violet.animated:hover {
     transform: translateY(calc(var(--spacing) * -1));
   }
 
@@ -314,6 +317,9 @@ body {
   .btn-orange:hover {
     background-color: var(--color-orange-700);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-orange.animated:hover {
     transform: translateY(calc(var(--spacing) * -1));
   }
 
@@ -334,6 +340,9 @@ body {
   .btn-transparent:hover {
     background-color: color-mix(in srgb, var(--color-kccf-purple-hover) 5%, transparent);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-transparent.animated:hover {
     transform: translateY(calc(var(--spacing) * -1));
   }
 
