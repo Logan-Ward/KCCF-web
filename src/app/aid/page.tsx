@@ -49,7 +49,7 @@ export default function Aid() {
               </div>
 
               <p className="mb-6">
-                We provide financial assistance to eligible families to help cover expenses related to their child’s cancer diagnosis.
+                We provide financial assistance to eligible families to help cover the expenses related to their child’s cancer diagnosis.
               </p>
 
               <div className="bg-orange-50 rounded-lg p-6 my-8">
