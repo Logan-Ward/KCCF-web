@@ -42,7 +42,7 @@ export default function HomeContent() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-16">
               <Link
                 href="/aid"
-                className="group btn-violet py-4 px-10 text-lg"
+                className="group btn-violet animated py-4 px-10 text-lg"
               >
                 <span>Family Assistance</span>
                 <svg className="ml-2 w-5 h-5 btn-icon-slide" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,10 +101,10 @@ export default function HomeContent() {
               </div>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link href="/our-story" className="btn-violet py-3 px-8 text-base">
+                <Link href="/our-story" className="btn-violet animated py-3 px-8 text-base">
                   Read Her Story
                 </Link>
-                <Link href="/our-story/#bookelanaformsection" className="btn-transparent py-3 px-8 text-base">
+                <Link href="/our-story/#bookelanaformsection" className="btn-transparent animated py-3 px-8 text-base">
                   Book Elana to Speak
                 </Link>
               </div>
@@ -283,7 +283,7 @@ export default function HomeContent() {
           </div>
 
           <div className="text-center">
-            <Link href="/media" className="btn-violet group py-3 px-6 md:px-8 text-base md:text-lg">
+            <Link href="/media" className="btn-violet animated group py-3 px-6 md:px-8 text-base md:text-lg">
               <span>View All Media Coverage</span>
               <svg className="ml-2 w-4 h-4 md:w-5 md:h-5 btn-icon-slide" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

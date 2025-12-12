@@ -18,7 +18,7 @@ export default function CallToAction() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <Link href="/donate" className="group btn-orange py-4 px-10 text-lg">
+          <Link href="/donate" className="group btn-orange animated py-4 px-10 text-lg">
             <span>Donate Now</span>
             <svg className="ml-2 w-5 h-5 btn-icon-grow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

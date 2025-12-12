@@ -68,7 +68,7 @@ export default function KCCFFamily() {
               </div>
 
               <div className="mt-10">
-                <Link href="/our-story" className="btn-violet py-3 px-8">
+                <Link href="/our-story" className="btn-violet animated py-3 px-8">
                   Read Elana's Story
                 </Link>
               </div>
