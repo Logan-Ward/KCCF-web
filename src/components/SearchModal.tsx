@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback, useMemo, type KeyboardEvent } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { useSearchModal } from '@/contexts/SearchModalContext'
 import { searchData } from '@/data/searchData'
@@ -40,7 +40,7 @@ export default function SearchModal() {
 
   // Handle escape key and click outside
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: globalThis.KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeModal()
       }
@@ -70,7 +70,7 @@ export default function SearchModal() {
     router.push(href)
   }, [closeModal, router])
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setSelectedIndex(prev => Math.min(prev + 1, searchResults.length - 1))
