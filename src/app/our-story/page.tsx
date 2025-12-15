@@ -56,9 +56,6 @@ export default function OurStory() {
                 </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white text-center">Elana during treatment</h3>
-              <p className="text-gray-600 dark:text-gray-200 text-center">
-                A brave 7-year-old facing the toughest battle of her life with courage and determination.
-              </p>
             </div>
 
             {/* After Beating Cancer */}
@@ -76,9 +73,6 @@ export default function OurStory() {
                 </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white text-center">Elana kicked cancer's butt</h3>
-              <p className="text-gray-600 dark:text-gray-200 text-center">
-                Victory achieved! After 15 months of treatment, Elana emerged stronger and more determined than ever.
-              </p>
             </div>
 
             {/* Elana Today */}
@@ -96,9 +90,6 @@ export default function OurStory() {
                 </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white text-center">Elana today</h3>
-              <p className="text-gray-600 dark:text-gray-200 text-center">
-                A thriving young leader, singer, and founder helping thousands of families through their cancer journeys.
-              </p>
             </div>
           </div>
         </div>
@@ -136,8 +127,7 @@ export default function OurStory() {
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#732154] to-fandango-400 rounded-3xl transform rotate-6 scale-105 opacity-20"></div>
-              <div className="relative bg-gradient-to-br from-[#732154]/20 to-[#732154]/30 dark:from-[#732154]/40 dark:to-[#732154]/50 p-8 rounded-3xl shadow-2xl">
+              <div className="relative bg-gradient-to-br from-violet-500/40 to-violet-500/50 dark:from-violet-500/60 dark:to-violet-500/70 p-8 rounded-3xl shadow-2xl">
                 <Image
                   src="/images/NUP_206704_00566-scaled.jpg"
                   alt="Elana during her cancer treatment"
@@ -199,15 +189,11 @@ export default function OurStory() {
                 Book Elana Koenig
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Elana shares her inspiring story at schools, organizations, and events to raise awareness about childhood cancer and the importance of supporting affected families.
+                Invite Elana Koenig to your graduation, gala, corporate event, or media platform to share her powerful story of turning pain into purpose, bringing hope, resilience, and impact to every audience.
               </p>
             </div>
 
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                Invite Elana to share her powerful story of hope, resilience, and the importance of supporting families facing childhood cancer.
-              </p>
-
               <FormButton
                 formType="book-elana"
                 variant="violet"

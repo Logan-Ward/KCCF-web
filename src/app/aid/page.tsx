@@ -44,12 +44,13 @@ export default function Aid() {
                   "When I was going through cancer treatment, all I wanted was to have my parents by my side and they wanted the same. They put their lives on hold to be with me. For most families, that means stepping away from jobs, bills, and daily responsibilities. But the bills still come. That’s why we offer financial assistance to families of children with cancer so they can focus on what matters most: healing."
                 </p>
                 <p className="text-right text-violet-600 font-semibold">
-                  — Elana, founder & child cancer survivor
+                  —  Elana, founder & child cancer survivor<br />
+                 {/* —  Emanuel, 20xx-202xx */}
                 </p>
               </div>
 
               <p className="mb-6">
-                We provide financial assistance to eligible families to help cover the expenses related to their child’s cancer diagnosis.
+            We provide financial assistance to eligible families to help cover expenses related to their child’s cancer diagnosis.
               </p>
 
               <div className="bg-orange-50 rounded-lg p-6 my-8">
@@ -88,6 +89,10 @@ export default function Aid() {
                   <li className="flex items-start">
                     <span className="text-saffron-500 mr-2">•</span>
                     Child must be receiving treatment at a credentialed hospital
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-saffron-500 mr-2">•</span>
+                    The application must be fully completed by both the family and the social worker
                   </li>
                   <li className="flex items-start">
                     <span className="text-saffron-500 mr-2">•</span>
