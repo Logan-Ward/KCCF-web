@@ -70,7 +70,7 @@ export default function Donate() {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Heal Children Emotionally</h3>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Provide rides and gas to life-saving appointments when treatment centers are far from home.
+                Support emotional wellness through counseling, camp experiences, and programs that help children cope with the trauma of cancer treatment.
               </p>
             </div>
 
