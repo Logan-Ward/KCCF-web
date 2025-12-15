@@ -43,7 +43,7 @@ export default function DonationButton({
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
     >
       {children || `Donate $${amount}`}
-      {icon && <span className="ml-2" aria-hidden="true">{icon}</span>}
+      {icon && <span className="btn-icon" aria-hidden="true">{icon}</span>}
     </Link>
   )
 }

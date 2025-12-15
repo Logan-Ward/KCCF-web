@@ -38,9 +38,9 @@ export default function FormButton({
   }
 
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm rounded-lg',
-    md: 'px-6 py-3 text-base rounded-lg',
-    lg: 'px-8 py-4 text-lg rounded-lg'
+    sm: 'px-4 py-2 text-sm rounded-full',
+    md: 'px-6 py-3 text-base rounded-full',
+    lg: 'px-8 py-4 text-lg rounded-full'
   }
 
   const widthClass = fullWidth ? 'w-full' : ''
@@ -55,7 +55,7 @@ export default function FormButton({
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`}
     >
       {children}
-      {icon && <span className="ml-2" aria-hidden="true">{icon}</span>}
+      {icon && <span className="btn-icon" aria-hidden="true">{icon}</span>}
     </button>
   )
 }

@@ -90,8 +90,13 @@ export default function CrazySocks() {
               <div className="mb-6">
                 <FormButton
                   formType="crazy-socks-sponsor"
-                  variant="primary"
+                  variant="violet"
                   size="md"
+                  icon={
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                  }
                 >
                   Sponsor Gift Bag Event
                 </FormButton>
@@ -406,25 +411,27 @@ export default function CrazySocks() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
               Sponsor Gift Bag Event
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              For hospitalized children battling cancer
-            </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-gray-900 text-center">
+            <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 text-gray-900 text-center">
               <p className="text-lg text-gray-700 mb-8">
                 Ready to make a difference? Partner with us to sponsor a gift bag event and bring joy to hospitalized children.
               </p>
 
               <FormButton
                 formType="crazy-socks-sponsor"
-                variant="primary"
+                variant="violet"
                 size="lg"
                 className="min-w-[250px]"
+                icon={
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                  </svg>
+                }
               >
                 Sponsor Gift Bag Event
               </FormButton>
