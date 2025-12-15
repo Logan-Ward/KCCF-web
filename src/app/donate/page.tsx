@@ -100,44 +100,6 @@ export default function Donate() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* One-Time Gift */}
-            <div className="card-interactive bg-gradient-to-br from-platinum-50 to-platinum-100 dark:bg-gray-700 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-14 h-14 bg-violet-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl" aria-hidden="true">💝</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">One-Time Gift</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">Make an immediate impact today.</p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <DonationButton amount={50} campaign="One-Time" variant="primary" size="md">Donate $50</DonationButton>
-                <DonationButton amount={100} campaign="One-Time" variant="outline" size="md" className="rounded-full">Donate $100</DonationButton>
-              </div>
-            </div>
-
-            {/* Monthly Gift */}
-            <div className="card-interactive bg-gradient-to-br from-platinum-50 to-platinum-100 dark:bg-gray-700 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl" aria-hidden="true">🔄</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">Monthly Gift</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">Provide steady support all year.</p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <DonationButton amount={20} campaign="Monthly" variant="primary" size="md">Give $20/mo</DonationButton>
-                <DonationButton amount={35} campaign="Monthly" variant="outline" size="md" className="rounded-full">Give $35/mo</DonationButton>
-              </div>
-            </div>
-
-            {/* DAF Donation */}
-            <div className="card-interactive bg-gradient-to-br from-platinum-50 to-platinum-100 dark:bg-gray-700 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-14 h-14 bg-purple-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                <span className="text-2xl" aria-hidden="true">📋</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">DAF Donation</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">Give through your Donor Advised Fund.</p>
-              <div className="flex justify-center">
-                <DonationButton campaign="DAF Donation" variant="primary" size="md">Learn More</DonationButton>
-              </div>
-            </div>
-
             {/* Corporate Matching */}
             <div className="card-interactive bg-gradient-to-br from-platinum-50 to-platinum-100 dark:bg-gray-700 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 text-center">
               <div className="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
