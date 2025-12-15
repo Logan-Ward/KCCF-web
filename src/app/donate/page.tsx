@@ -46,10 +46,10 @@ export default function Donate() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-              Why Your <span className="text-violet-600 dark:text-saffron-400">Gift</span> Matters
+              Why Your Gift Matters
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Your gift provides emergency financial support to families with children battling cancer. You help cover meals, travel, lodging, and essential care during long hospital stays, bringing comfort, stability, and hope when they need it most.
+              Your gift provides critical financial, emotional, and practical support to children battling cancer and their families such as cancer treatment, meals, travel, lodging and essential care during long hospital stays, bringing comfort, stability, and hope when they need it most.
             </p>
           </div>
 
