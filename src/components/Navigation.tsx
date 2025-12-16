@@ -148,8 +148,6 @@ export default function Navigation() {
     }, 150)
   }
 
-
-
   const handleKeyDown = (e: React.KeyboardEvent, itemName: string) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
