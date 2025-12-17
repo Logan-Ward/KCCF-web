@@ -45,7 +45,7 @@ export default function FormModal() {
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={closeModal}
       />
-      
+
       {/* Modal */}
       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full h-[90vh] sm:h-[85vh] flex flex-col overflow-hidden">
         {/* Header */}
@@ -60,7 +60,7 @@ export default function FormModal() {
               </p>
             )}
           </div>
-          
+
           {/* Close button */}
           <button
             onClick={closeModal}
